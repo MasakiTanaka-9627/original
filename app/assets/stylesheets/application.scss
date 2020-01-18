@@ -1,0 +1,84 @@
+@import "bootstrap";
+
+header {
+    padding-bottom: 30px;
+}
+
+footer {
+    padding-top: 30px;
+}
+
+.box7 {
+    padding: 120px 1px;
+    margin: 20px 0;
+    color: #474747;
+    background: whitesmoke;
+    /*背景色*/
+    border-left: double 7px #4ec4d3;
+    /*左線*/
+    border-right: double 7px #4ec4d3;
+    /*右線*/
+}
+
+.box7 p {
+    margin: 0;
+    padding: 0;
+}
+
+.recomendgame {
+    padding: 240px 1px;
+    margin: 20px 0;
+    color: #474747;
+    background: whitesmoke;
+    /*背景色*/
+    border-left: double 7px #4ec4d3;
+    /*左線*/
+    border-right: double 7px #4ec4d3;
+    /*右線*/
+}
+
+.tag {
+    padding: 240px 1px;
+    margin: 20px 0;
+    color: #474747;
+    background: whitesmoke;
+    /*背景色*/
+    border-left: double 7px #4ec4d3;
+    /*左線*/
+    border-right: double 7px #4ec4d3;
+    /*右線*/
+}
+
+.box6 {
+    padding: 1000px 1px;
+    margin: 20px 0;
+    background: #f0f7ff;
+    border: dashed 2px #5b8bd0;
+    /*点線*/
+}
+
+.box6 p {
+    margin: 0;
+    padding: 0;
+}
+
+.box1 {
+    padding: 120px 1px;
+    margin: 20px 0;
+    font-weight: bold;
+    border: solid 3px #000000;
+    background-color: #ffffff;
+}
+
+.box1 p {
+    margin: 0;
+    padding: 0;
+}
+
+.rank {
+    padding: 240px 1px;
+    margin: 20px 0;
+    font-weight: bold;
+    border: solid 3px #000000;
+    background-color: #ffffff;
+}
