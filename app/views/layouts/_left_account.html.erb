@@ -1,3 +1,9 @@
+<% if logged_in? %>
 <div class="box1">
-    <p>アカウント情報</p>
+<p>ログイン中</p>
 </div>
+<% else %>
+<div class="box1">
+    <p>ログインしてください</p>
+</div>
+<% end %>

@@ -4,6 +4,7 @@
             <div class="col-lg-6 offset-lg-3">
                 <h2>登録フォーム</h2>
                 <%= form_for(@user) do |f| %>
+                <%= render 'shared/error_messages' %>
 
                 <div class="form-group">
                     <%= f.label :name, 'ニックネーム' %>
