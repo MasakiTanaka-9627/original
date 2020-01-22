@@ -5,6 +5,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @boards = @user.boards.paginate(page: params[:page])
   end
 
   def create
@@ -19,8 +20,9 @@ class UsersController < ApplicationController
   end
 
   private
-  #ストロングパラメーター
+
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation, :image, :introduce, :age, :sex, :address)
   end
+
 end
