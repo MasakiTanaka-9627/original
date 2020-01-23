@@ -4,10 +4,10 @@
         <div class="col-lg-9">
             <div class="box2">
                 <div class="row">
-                    <div class="col-4">
-                        <%= image_tag 'usersample.png' %>
+                    <div class="col-3">
+                        <%= image_tag 'usersample.png',size: '150x150'%>
                     </div>
-                    <div class="col-4">
+                    <div class="col-5">
                         <h2>プロフィール</h2><%= @user.name%>
                     </div>
                     <div class="col-4">
@@ -22,17 +22,25 @@
                     </div>
                 </div>
                 <div class="col-lg-8">
-                    <div class="box1 px-2 pb-5　mx-auto">
+                    <div class="box3">
+                        <h2>投稿フォーム</h2>
+                        <div class="mx-5">
+                            <%= link_to "いまなにしていますか？",'#', class: 'btn btn-outline-secondary btn-block' %>
+                        </div>
+                    </div>
+                    <div class="box3">
                         <% if @user.boards.any? %>
-                    <%= paginate @boards %>                                                
-                        <h2 class="mt-1">投稿一覧</h2>
+                        <h2>投稿一覧</h2>
+                        <%= paginate @boards %>
+                        <div class="mx-1">
                             <%= render @boards %>
-                        <% end %>
+                            <% end %>
+                        </div>
                         <%= paginate @boards %>
                     </div>
                 </div>
             </div>
         </div>
-        <%= render 'layouts/right' %>        
+        <%= render 'layouts/right' %>
     </div>
 </div>
