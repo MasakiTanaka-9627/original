@@ -1,6 +1,5 @@
-<% @user  = User.find(session[:user_id]) %>
-
 <% if logged_in? %>
+<% @user  = User.find(session[:user_id]) %>
 <div class="box1">
 <p>プロフィール：<%= @user.name %></p>
 <%= link_to "プロフィール画面",user_path(@user.id) , class: 'btn btn-primary btn-block d-flex' %>

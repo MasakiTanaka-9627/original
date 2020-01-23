@@ -1,36 +1,38 @@
 <% @user  = User.find(session[:user_id]) %>
-
-<body>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-9">
-                <div class="box2">
-                    <div class="row">
-                        <div class="col-4">
-                            <%= image_tag 'usersample.png' %>
-                        </div>
-                        <div class="col-4">
-                            <h2>プロフィール</h2><%= @user.name%>
-                        </div>
-                        <div class="col-4">
-                            <h2>email</h2><%= @user.email%>
-                        </div>
-                    </div>
-                </div>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-9">
+            <div class="box2">
                 <div class="row">
-                    <div class="col-lg-4">
-                        <div class="box1">
-                            <p>おすすめゲーム</p>
-                        </div>
+                    <div class="col-4">
+                        <%= image_tag 'usersample.png' %>
                     </div>
-                    <div class="col-lg-8">
-                        <div class="box1">
-                            <p>自身の投稿一覧</p>
-                        </div>
+                    <div class="col-4">
+                        <h2>プロフィール</h2><%= @user.name%>
+                    </div>
+                    <div class="col-4">
+                        <h2>email</h2><%= @user.email%>
                     </div>
                 </div>
             </div>
-            <%= render 'layouts/right' %>
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="box1">
+                        <p>おすすめゲーム</p>
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <div class="box1 px-2 pb-5　mx-auto">
+                        <% if @user.boards.any? %>
+                    <%= paginate @boards %>                                                
+                        <h2 class="mt-1">投稿一覧</h2>
+                            <%= render @boards %>
+                        <% end %>
+                        <%= paginate @boards %>
+                    </div>
+                </div>
+            </div>
         </div>
+        <%= render 'layouts/right' %>        
     </div>
-</body>
+</div>

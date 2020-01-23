@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @boards = @user.boards.paginate(page: params[:page])
+    @boards = @user.boards.page(params[:page]).per(10)
   end
 
   def create
