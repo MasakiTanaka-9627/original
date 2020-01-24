@@ -8,4 +8,7 @@
     <span class="timestamp">
         投稿時間：<%= time_ago_in_words(board.created_at) %>
     </span>
+    <br>
+    <span class="user">
+    <% link_to '削除',board_path(board.id), method: :delete%>
 </div>
