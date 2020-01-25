@@ -13,7 +13,8 @@ Rails.application.routes.draw do
 
   get '/boards', to: 'boards#new'
   post '/boards', to: 'boards#create'
-  post "posts/:id/destroy" => "posts#destroy"
+
+  resources :boards
 
 end
 

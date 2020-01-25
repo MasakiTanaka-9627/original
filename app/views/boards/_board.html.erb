@@ -1,6 +1,7 @@
 <div class="box1">
     <span class="user">
-        ユーザー名：<%= link_to board.user.name, board.user %></span>
+        ユーザー名：<%= link_to board.user.name, board.user %>
+    </span>
     <br>
     <span class="content">
         タイトル：<%= board.content %></span>
@@ -9,6 +10,7 @@
         投稿時間：<%= time_ago_in_words(board.created_at) %>
     </span>
     <br>
-    <span class="user">
-        <% link_to '削除',board_path(board.id), method: :delete%>
+
+    <%= link_to "削除" ,board_path(board.id) , method: :delete %>
+
 </div>

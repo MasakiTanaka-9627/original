@@ -14,10 +14,10 @@ class BoardsController < ApplicationController
     end
   end
 
-  def destory
-    @board = Board.find_by(id: board_params[:id])
+  def destroy
+    @board = Board.find(params[:id])
     @board.destroy
-    redirect_to("/")
+    redirect_to @current_user
   end
 
   private
