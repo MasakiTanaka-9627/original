@@ -6,16 +6,22 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-
-User.create!(name:  "Example User",
-             email: "example@railstutorial.org",
-             password:              "foobar",
-             password_confirmation: "foobar",)
-
+User.create!(name: "Example User",
+             email: "boa",
+             password: "foobar",
+             password_confirmation: "foobar")
 
 users = User.order(:created_at).take(6)
 
-50.times do
-  content = Faker::Lorem.sentence(5)
-  users.each { |user| user.boards.create!(content: content) }
+50.times do |num|
+  User.create(name: "UserID#{num}",
+              email: "example#{num}@rails.com",
+              password: "foobar#{num}",
+              password_confirmation: "foobar#{num}")
+end
+
+50.times do |num|
+  Board.create(title: "ID#{num}",
+               content: "掲示板#{num}",
+               user_id: "1")
 end

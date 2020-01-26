@@ -10,25 +10,31 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <% if logged_in? %>
-                        <li class="nav-item">
+                    <li class="nav-item">
                         <%= link_to "プロフィール", current_user, class: "nav-link" %>
-                    <% else %>
-                        <li class="nav-item">
+                    <li class="nav-item">
+                        <%= link_to "投稿一覧", boards_path,class: "nav-link" %>
+
+                        <% else %>
+                    <li class="nav-item">
                         <%= link_to "新規登録", signup_path, class: "nav-link"  %>
+                    
+                    <li class="nav-item">
+                        <%= link_to "ログイン", login_path, class: "nav-link"  %>
                     </li>
 
                     <% end %>
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
-                <ul class="navbar-nav mr-auto">
-                <% if logged_in? %>
-                <li class="nav-item">
-                    <%= link_to "ログアウト",logout_path,class: "nav-link", method: :delete %>
-                </li>
-                <% else%>
-                <%end%>
-                    <input class="form-control mr-sm-2" type="search" placeholder="キーワードで検索" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    <ul class="navbar-nav mr-auto">
+                        <% if logged_in? %>
+                        <li class="nav-item">
+                            <%= link_to "ログアウト",logout_path,class: "nav-link", method: :delete %>
+                        </li>
+                        <% else%>
+                        <%end%>
+                        <input class="form-control mr-sm-2" type="search" placeholder="キーワードで検索" aria-label="Search">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                     </ul>
                 </form>
             </div>

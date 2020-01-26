@@ -1,16 +1,19 @@
-<div class="box1">
-    <span class="user">
-        ユーザー名：<%= link_to board.user.name, board.user %>
+<div class="box3">
+   <span class="user">
+        ユーザー名：<%= link_to board.user.name,user_path %>
     </span>
     <br>
     <span class="content">
-        タイトル：<%= board.content %></span>
+        タイトル：<%= board.title %></span>
     <br>
     <span class="timestamp">
         投稿時間：<%= time_ago_in_words(board.created_at) %>
     </span>
     <br>
-
-    <%= link_to "削除" ,board_path(board.id) , method: :delete %>
-
+    <%= link_to "詳細" ,"/boards/#{board.id}", class: 'btn btn-outline-primary btn-block' %>
+    <br>
+    <%= link_to "編集" ,"/boards/#{board.id}/edit", class: 'btn btn-outline-primary btn-block' %>
+    <br>
+    <%= link_to "削除" ,"/boards/#{board.id}", :method => :delete, class: 'btn btn-outline-secondary btn-block' %>
+    <br>
 </div>

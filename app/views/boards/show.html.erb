@@ -1,0 +1,27 @@
+<body>
+    <div class="container">
+        <div class="row">
+            <%= render 'layouts/left' %>
+            <div class="col-lg-6">
+                <div class="box1">
+                    <h2>投稿詳細</h2>
+                    <span class="user">
+                        ユーザー名：<%=  @board.user.name %>
+                    </span>
+                    <br>
+                    <span class="content">
+                        タイトル：<%= @board.title %></span>
+                    <br>
+                    <span class="content">
+                        本文：<%= @board.content %>
+                    </span>
+                    <br>
+                    <%= link_to "編集" ,"/boards/#{@board.id}/edit", class: 'btn btn-outline-primary btn-block' %>
+                    <br>
+                    <%= link_to "削除" ,"/boards/#{@board.id}", :method => :delete, class: 'btn btn-outline-secondary btn-block' %>
+                </div>
+            </div>
+            <%= render 'layouts/right' %>
+        </div>
+    </div>
+</body>
