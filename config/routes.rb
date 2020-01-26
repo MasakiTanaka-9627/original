@@ -9,11 +9,6 @@ Rails.application.routes.draw do
   
   
   resources :users, only: [:index, :show, :create, :edit, :update]
-  resources :boards do
-    collection do
-      get 'search' => 'articles#search'
-    end
-  end
-
+  resources :boards
   resources :comments, only: [:create, :destroy]
 end

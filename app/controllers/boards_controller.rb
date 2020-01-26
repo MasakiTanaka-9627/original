@@ -2,15 +2,11 @@ class BoardsController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def index
-#    if params[:keyword].blank?
-#      @boards = Board.all.page(params[:page]).per(10)
-#    else
-      @boards = Board.where('title LIKE ?', "%#{ params[:keyword]}%").page(params[:page]).per(10)
-
-#      @boards = Board.search(boar dwparams[:keyword]).per(10)
-
-
-#    end
+    if params[:keyword].blank?
+      @boards = Board.all.page(params[:page]).per(10)
+    else
+      @boards = Board.where("title LIKE ?", "%#{params[:keyword]}%").page(params[:page]).per(10)
+    end
   end
 
   def new
