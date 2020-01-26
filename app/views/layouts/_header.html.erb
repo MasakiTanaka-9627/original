@@ -1,11 +1,11 @@
 <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
-            <%= link_to "GameBoard", root_path,class: "navbar-brand" %>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+            <%= form_tag boards_path, method: :get do %>
+            <%= text_field_tag :keyword %>
+            <%= submit_tag '検索' %>
+            <% end %>
+
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
@@ -18,7 +18,7 @@
                         <% else %>
                     <li class="nav-item">
                         <%= link_to "新規登録", signup_path, class: "nav-link"  %>
-                    
+
                     <li class="nav-item">
                         <%= link_to "ログイン", login_path, class: "nav-link"  %>
                     </li>
@@ -33,8 +33,6 @@
                         </li>
                         <% else%>
                         <%end%>
-                        <input class="form-control mr-sm-2" type="search" placeholder="キーワードで検索" aria-label="Search">
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                     </ul>
                 </form>
             </div>

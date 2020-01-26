@@ -1,6 +1,6 @@
 <div class="box3">
    <span class="user">
-        ユーザー名：<%= link_to board.user.name,user_path %>
+        ユーザー名：<%= link_to board.user.name,user_path(id: board.user_id) %>
     </span>
     <br>
     <span class="content">

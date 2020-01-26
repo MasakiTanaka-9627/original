@@ -9,6 +9,11 @@ Rails.application.routes.draw do
   
   
   resources :users, only: [:index, :show, :create, :edit, :update]
-  resources :boards
+  resources :boards do
+    collection do
+      get 'search' => 'articles#search'
+    end
+  end
+
   resources :comments, only: [:create, :destroy]
 end
