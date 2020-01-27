@@ -10,8 +10,16 @@
         本文： <%= board.content %></span>
     <br>
     <span class="timestamp">
-        投稿時間：<%= time_ago_in_words(board.created_at) %>
+        投稿日時：<%= board.created_at.to_s(:datetime_jp) %>
     </span>
+    <% if board.tags.present? %>
+    <br>
+    タグ：
+    <% board.tags.each do |tag| %>
+    <span class='badge badge-primary'><%= tag.name %></span>
+    <% end %>
+    <% else %>
+    <% end %>
     <div class="row">
         <div class="col-10 offset-1">
             <%= link_to "詳細" ,"/boards/#{board.id}", class: 'btn btn-outline-primary btn-block' %>

@@ -46,5 +46,5 @@ ActiveRecord::Schema.define(version: 2020_01_27_103442) do
 
   add_foreign_key "board_tag_relations", "boards"
   add_foreign_key "board_tag_relations", "tags"
-  add_foreign_key "boards", "users"
+  add_foreign_key "boards", "users" 
 end

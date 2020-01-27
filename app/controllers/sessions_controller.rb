@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
       log_in user
       redirect_to user_url(id: user.id)
     else
-      flash[:danger] = 'Invalid email/password combination'
+      flash[:danger] = 'パスワードとメールアドレスが登録されていません'
       render 'new'
     end
   end

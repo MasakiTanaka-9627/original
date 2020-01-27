@@ -2,7 +2,6 @@ class BoardsController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def index
-
     if params[:keyword].blank?
       @boards = Board.all.page(params[:page]).per(10)
     else
@@ -21,12 +20,12 @@ class BoardsController < ApplicationController
     if @board.save
       redirect_to @current_user
     else
+      flash.now[:danger] = '投稿に失敗しました。'
       render action: :new
     end
   end
 
   def show
-#    @boards = Board.find_by(user_id: @current_user.id)
     @boards = Board.all
   end
 
@@ -35,7 +34,12 @@ class BoardsController < ApplicationController
 
   def update
     @board.update(board_params)
-    redirect_to @current_user
+    if @board.save
+      redirect_to @current_user
+    else
+      flash.now[:danger] = '編集に失敗しました。'
+      render action: :new
+    end
   end
 
   def destroy
@@ -46,7 +50,7 @@ class BoardsController < ApplicationController
   private
 
   def board_params
-    params.require(:board).permit(:id, :title, :content)
+    params.require(:board).permit(:id, :title, :content, tag_ids: [])
   end
 
   def set_user
