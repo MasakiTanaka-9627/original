@@ -10,16 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_27_101410) do
+ActiveRecord::Schema.define(version: 2020_01_27_103442) do
+
+  create_table "board_tag_relations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "board_id"
+    t.bigint "tag_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["board_id"], name: "index_board_tag_relations_on_board_id"
+    t.index ["tag_id"], name: "index_board_tag_relations_on_tag_id"
+  end
 
   create_table "boards", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "content"
-    t.string "tag"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "title"
     t.index ["user_id"], name: "index_boards_on_user_id"
+  end
+
+  create_table "tags", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -30,5 +44,7 @@ ActiveRecord::Schema.define(version: 2020_01_27_101410) do
     t.string "password_digest"
   end
 
+  add_foreign_key "board_tag_relations", "boards"
+  add_foreign_key "board_tag_relations", "tags"
   add_foreign_key "boards", "users"
 end
