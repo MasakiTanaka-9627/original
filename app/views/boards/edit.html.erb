@@ -5,7 +5,6 @@
                 <h2>編集フォーム</h2>
                 <%= form_for @board, url: board_path do |f| %>
                 <%= render 'shared/error_messages' %>
-
                 <div class="form-group">
                     <%= f.label :title, 'タイトル' %>
                     <%= f.text_field :title, class: 'form-control' %>
@@ -14,7 +13,6 @@
                     <%= f.label :content, '本文' %>
                     <%= f.text_area :content, class: 'form-control' %>
                 </div>
-
                 <div class="col-lg-8 offset-lg-2">
                     <%= f.submit '編集する', class: 'btn btn-primary btn-block' %>
                 </div>

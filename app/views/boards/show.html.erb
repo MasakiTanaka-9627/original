@@ -15,10 +15,13 @@
                     <span class="content">
                         本文：<%= @board.content %>
                     </span>
+                    <% if @board.user_id == current_user.id %>
                     <br>
                     <%= link_to "編集" ,"/boards/#{@board.id}/edit", class: 'btn btn-outline-primary btn-block' %>
                     <br>
-                    <%= link_to "削除" ,"/boards/#{@board.id}", :method => :delete, class: 'btn btn-outline-secondary btn-block' %>
+                    <%= link_to "削除" ,"/boards/#{@board.id}", :method => :delete, class: 'btn btn-outline-secondary btn-block',data: { confirm: '削除しますか？' } %>                    
+                    <% else %>
+                    <% end %>
                 </div>
             </div>
             <%= render 'layouts/right' %>

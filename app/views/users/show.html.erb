@@ -1,4 +1,3 @@
-<% @user  = User.find(session[:user_id]) %>
 <div class="container">
     <div class="row">
         <div class="col-lg-9">
@@ -28,26 +27,24 @@
                             <%= link_to "いまなにしていますか？",new_board_path,class: 'btn btn-outline-secondary btn-block' %>
                         </div>
                     </div>
-                    <div class="box3">
-                        <% if @user.boards.any? %>
-                         <h2>投稿一覧</h2>
-                        <%= paginate @boards %>
-                        <div class="mx-1">
-                            <%= render @boards %>
-                        </div>
-                        <%= paginate @boards %>
-                        <% else %>
-                        <h2>投稿一覧</h2>
-                        <div class="mx-1">
-                            <div class="box1 pb-4">
-                                まだ投稿はありません。
-                            </div>
+                    <% if @user.boards.any? %>
+                    <h2>投稿一覧</h2>
+                    <%= paginate @boards %>
+                    <div class="mx-1">
+                        <%= render @boards %>
+                    </div>
+                    <%= paginate @boards %>
+                    <% else %>
+                    <h2>投稿一覧</h2>
+                    <div class="mx-1">
+                        <div class="box1 pb-4">
+                            まだ投稿はありません。
                         </div>
                         <% end %>
                     </div>
                 </div>
             </div>
+            <%= render 'layouts/right' %>
         </div>
-        <%= render 'layouts/right' %>
     </div>
 </div>

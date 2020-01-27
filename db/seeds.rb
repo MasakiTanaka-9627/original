@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 User.create!(name: "Example User",
-             email: "boa",
+             email: "admin@rails.com",
              password: "foobar",
              password_confirmation: "foobar")
 
@@ -20,8 +20,11 @@ users = User.order(:created_at).take(6)
               password_confirmation: "foobar#{num}")
 end
 
-50.times do |num|
-  Board.create(title: "ID#{num}",
-               content: "掲示板#{num}",
-               user_id: "1")
+5.times do |user|
+  10.times do |num|
+    Board.create(title: "BoardID:#{num}_UserID:#{user}",
+                content: "掲示板#{num}_#{user}",
+                user_id: "#{user}")
+  end
 end
+

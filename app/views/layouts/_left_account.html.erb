@@ -1,8 +1,12 @@
 <% if logged_in? %>
 <% @user  = User.find(session[:user_id]) %>
-<div class="box1">
-<p>プロフィール：<%= @user.name %></p>
-<%= link_to "プロフィール画面",user_path(@user.id) , class: 'btn btn-primary btn-block d-flex' %>
+<div class="box3">
+    <p>ユーザー名：<%= @user.name %></p>
+    <div class="row">
+        <div class="col-10 offset-1">
+            <%= link_to "プロフィール",user_path(@user.id) , class: 'btn btn-outline-primary btn-block'%>
+        </div>
+    </div>
 </div>
 <% else %>
 <div class="box1">

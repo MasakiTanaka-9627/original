@@ -1,19 +1,28 @@
 <div class="box3">
-   <span class="user">
+    <span class="user">
         ユーザー名：<%= link_to board.user.name,user_path(id: board.user_id) %>
     </span>
     <br>
     <span class="content">
         タイトル：<%= board.title %></span>
     <br>
+    <span class="content">
+        本文： <%= board.content %></span>
+    <br>
     <span class="timestamp">
         投稿時間：<%= time_ago_in_words(board.created_at) %>
     </span>
-    <br>
-    <%= link_to "詳細" ,"/boards/#{board.id}", class: 'btn btn-outline-primary btn-block' %>
-    <br>
-    <%= link_to "編集" ,"/boards/#{board.id}/edit", class: 'btn btn-outline-primary btn-block' %>
-    <br>
-    <%= link_to "削除" ,"/boards/#{board.id}", :method => :delete, class: 'btn btn-outline-secondary btn-block' %>
-    <br>
+    <div class="row">
+        <div class="col-10 offset-1">
+            <%= link_to "詳細" ,"/boards/#{board.id}", class: 'btn btn-outline-primary btn-block' %>
+            <% if board.user_id == current_user.id %>
+            <br>
+            <%= link_to "編集" ,"/boards/#{board.id}/edit", class: 'btn btn-outline-primary btn-block' %>
+            <br>
+            <%= link_to "削除" ,"/boards/#{board.id}", :method => :delete, class: 'btn btn-outline-secondary btn-block',data: { confirm: '削除しますか？' } %>
+            <br>
+            <% else %>
+            <% end %>
+        </div>
+    </div>
 </div>

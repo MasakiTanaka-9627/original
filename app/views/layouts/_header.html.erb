@@ -1,11 +1,11 @@
 <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
-            <%= form_tag boards_path, method: :get do %>
-            <%= text_field_tag :keyword %>
-            <%= submit_tag '検索' %>
-            <% end %>
-
+            <%= link_to "GameBoard", root_path,class: "navbar-brand" %>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
@@ -14,15 +14,12 @@
                         <%= link_to "プロフィール", current_user, class: "nav-link" %>
                     <li class="nav-item">
                         <%= link_to "投稿一覧", boards_path,class: "nav-link" %>
-
                         <% else %>
                     <li class="nav-item">
                         <%= link_to "新規登録", signup_path, class: "nav-link"  %>
-
                     <li class="nav-item">
                         <%= link_to "ログイン", login_path, class: "nav-link"  %>
                     </li>
-
                     <% end %>
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
@@ -33,6 +30,12 @@
                         </li>
                         <% else%>
                         <%end%>
+                        <div class="form-inline my-2 my-lg-0">
+                            <%= form_tag boards_path, method: :get do %>
+                            <%= text_field_tag :keyword, "" ,placeholder: "入力してください", class: "form-control mr-sm-2" %>
+                            <%= submit_tag '検索', class: "btn btn-outline-success my-2 my-sm-0" %>
+                        </div>
+                        <% end %>
                     </ul>
                 </form>
             </div>

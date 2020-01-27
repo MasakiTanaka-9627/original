@@ -2,6 +2,7 @@ class BoardsController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def index
+
     if params[:keyword].blank?
       @boards = Board.all.page(params[:page]).per(10)
     else
@@ -25,6 +26,8 @@ class BoardsController < ApplicationController
   end
 
   def show
+#    @boards = Board.find_by(user_id: @current_user.id)
+    @boards = Board.all
   end
 
   def edit
