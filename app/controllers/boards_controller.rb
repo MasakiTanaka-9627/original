@@ -4,8 +4,8 @@ class BoardsController < ApplicationController
   def index
     if params[:keyword].blank?
       @boards = Board.all.page(params[:page]).per(10)
-    else
-      @boards = Board.where("title LIKE ?", "%#{params[:keyword]}%").page(params[:page]).per(10)
+    else 
+      @boards =  Board.search(params[:keyword]).page(params[:page]).per(10)
     end
   end
 
