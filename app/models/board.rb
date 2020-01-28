@@ -4,6 +4,7 @@ class Board < ApplicationRecord
   validates :content, presence: true
 
   belongs_to :user
+  has_many :comments
   validates :user_id, presence: true
 
   has_many :board_tag_relations, dependent: :destroy

@@ -27,6 +27,8 @@ class BoardsController < ApplicationController
 
   def show
     @boards = Board.all
+    @comments = @board.comments
+    @comment = Comment.new
   end
 
   def edit
@@ -50,7 +52,7 @@ class BoardsController < ApplicationController
   private
 
   def board_params
-    params.require(:board).permit(:id, :title, :content, tag_ids: [])
+    params.require(:board).permit(:id, :title, :content,:content, tag_ids: [])
   end
 
   def set_user

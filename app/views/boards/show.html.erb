@@ -28,6 +28,18 @@
                     <% else %>
                     <% end %>
                 </div>
+                <div class="box1">
+                    <h2>コメント一覧</h2>
+                    <% @comments.each do |c| %>
+                    <div>
+                        <a href="/users/<%= @board.user.id %>"><%= c.user.email %></a>
+                        <%= c.content %>
+                        <hr>
+                    </div>
+                    <% end %>
+                    <%= render @board.comments %>
+                    <%= render "comments/form" %>
+                </div>
             </div>
             <%= render 'layouts/right' %>
         </div>
