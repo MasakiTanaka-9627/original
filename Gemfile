@@ -34,6 +34,7 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'bootstrap'
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 
 # Google Play Store & App Store Ranking
 gem 'store_api'

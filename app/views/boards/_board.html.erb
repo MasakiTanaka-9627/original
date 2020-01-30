@@ -6,9 +6,6 @@
     <span class="content">
         タイトル：<%= board.title %></span>
     <br>
-    <span class="content">
-        本文： <%= board.content %></span>
-    <br>
     <span class="timestamp">
         投稿日時：<%= board.created_at.to_s(:datetime_jp) %>
     </span>
@@ -19,6 +16,10 @@
     <span class='badge badge-primary'><%= tag.name %></span>
     <% end %>
     <% else %>
+    <br>
+    <span class="content">
+        本文： <%= board.content %></span>
+    <br>
     <% end %>
     <div class="row">
         <div class="col-10 offset-1">

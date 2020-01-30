@@ -17,16 +17,20 @@
             <div class="row">
                 <div class="col-lg-4">
                     <div class="box1">
-                        <p>おすすめゲーム</p>
+                        <h2>おすすめゲーム</h2>
                     </div>
                 </div>
                 <div class="col-lg-8">
+                    <% if @user.id = current_user.id %>
                     <div class="box3">
                         <h2>投稿フォーム</h2>
+                        <%= @user.id %>
+                        <%= current_user.id %>
                         <div class="mx-5">
                             <%= link_to "いまなにしていますか？",new_board_path,class: 'btn btn-outline-secondary btn-block' %>
                         </div>
                     </div>
+                    <% end %>
                     <% if @user.boards.any? %>
                     <h2>投稿一覧</h2>
                     <%= paginate @boards %>

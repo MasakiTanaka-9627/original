@@ -28,18 +28,19 @@
                     <% else %>
                     <% end %>
                 </div>
-                <div class="box1">
-                    <h2>コメント一覧</h2>
-                    <% @comments.each do |c| %>
-                    <div>
-                        <a href="/users/<%= @board.user.id %>"><%= c.user.email %></a>
-                        <%= c.content %>
-                        <hr>
-                    </div>
+                <%= render "comments/form" %>
+                <h2 class="mt-3">コメント一覧</h2>
+                <% @comments.each do |comment| %>
+                <div class="box3">
+                    ユーザー名：<%= comment.user.name %>
+                    <br>
+                    コメント：<%= comment.content %>
+                    <% if comment.user_id == current_user.id %>
+                    <%= button_to "削除", board_comment_path(comment), method: :delete, class: 'btn btn-outline-secondary btn-block',data: { confirm: '削除しますか？' } %>
+                    <% else %>
                     <% end %>
-                    <%= render @board.comments %>
-                    <%= render "comments/form" %>
                 </div>
+                <% end %>
             </div>
             <%= render 'layouts/right' %>
         </div>
