@@ -13,7 +13,7 @@ User.create!(name: "Example User",
 
 users = User.order(:created_at).take(6)
 
-50.times do |num|
+5.times do |num|
   User.create(name: "UserID#{num}",
               email: "example#{num}@rails.com",
               password: "foobar#{num}",
@@ -21,7 +21,7 @@ users = User.order(:created_at).take(6)
 end
 
 5.times do |user|
-  10.times do |num|
+  5.times do |num|
     Board.create(title: "BoardID:#{num}_UserID:#{user}",
                 content: "掲示板#{num}_#{user}",
                 user_id: "#{user}")

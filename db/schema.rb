@@ -13,7 +13,7 @@
 ActiveRecord::Schema.define(version: 2020_01_30_021844) do
 
   create_table "board_tag_relations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "board_id"
+    t.bigint "board_id"
     t.bigint "tag_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -21,9 +21,9 @@ ActiveRecord::Schema.define(version: 2020_01_30_021844) do
     t.index ["tag_id"], name: "index_board_tag_relations_on_tag_id"
   end
 
-  create_table "boards", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "boards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "content"
-    t.integer "user_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "title"
@@ -32,8 +32,8 @@ ActiveRecord::Schema.define(version: 2020_01_30_021844) do
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "content"
-    t.integer "user_id"
-    t.integer "board_id"
+    t.bigint "user_id"
+    t.bigint "board_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["board_id"], name: "index_comments_on_board_id"
@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 2020_01_30_021844) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "users", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.string "email"
     t.datetime "created_at", null: false

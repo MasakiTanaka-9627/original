@@ -21,17 +21,14 @@
         本文： <%= board.content %></span>
     <br>
     <% end %>
-    <div class="row">
-        <div class="col-10 offset-1">
-            <%= link_to "詳細" ,"/boards/#{board.id}", class: 'btn btn-outline-primary btn-block' %>
+        <div class="ml-5 mr-5">
+            <%= link_to "詳細" ,"/boards/#{board.id}", class: 'btn btn-outline-primary btn-block mt-3' %>
             <% if board.user_id == current_user.id %>
             <br>
             <%= link_to "編集" ,"/boards/#{board.id}/edit", class: 'btn btn-outline-primary btn-block' %>
             <br>
-            <%= link_to "削除" ,"/boards/#{board.id}", :method => :delete, class: 'btn btn-outline-secondary btn-block',data: { confirm: '削除しますか？' } %>
-            <br>
+            <%= link_to "削除" ,"/boards/#{board.id}", :method => :delete, class: 'btn btn-outline-secondary btn-block mb-3',data: { confirm: '削除しますか？' } %>
             <% else %>
             <% end %>
-        </div>
     </div>
 </div>

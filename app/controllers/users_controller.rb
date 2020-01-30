@@ -9,10 +9,9 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     @user.update(user_params)
-    binding.pry
-
+binding.pry
     if @user.save
-      redirect_to @current_user
+      redirect_to current_user
     else
       flash.now[:danger] = '編集に失敗しました。'
       render action: :new

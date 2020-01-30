@@ -9,14 +9,14 @@
                     <div class="col-lg-9">
                         <div class="row">
                             <div class="col-lg-6">
-                                <h2>名前</h2><%= @user.name%>
+                                <h2 class="mr-2">名前</h2><%= @user.name%>
                             </div>
                             <div class="col-lg-6">
-                                <h2>email</h2><%= @user.email%>
+                                <h2  class="mr-2">email</h2><%= @user.email%>
                             </div>
                         </div>
                         <div>
-                            <h2 class="mt-2">自己紹介文</h2>
+                            <h2 class="mr-2 mt-2">自己紹介文</h2>
                             <p><%= @user.profile %></p>
                             <%= link_to "プロフィール編集",edit_user_path,class: 'btn btn-outline-secondary btn-block' %>
                         </div>
@@ -31,10 +31,10 @@
                     </div>
                     <div class="col-lg-8">
                         <% if @user.id == current_user.id %>
-                        <div class="box3">
+                        <div class="box3 mb-3">
                             <h2>投稿フォーム</h2>
                             <div class="mx-5">
-                                <%= link_to "いまなにしていますか？",new_board_path,class: 'btn btn-outline-secondary btn-block' %>
+                                <%= link_to "いまなにしていますか？",new_board_path,class: 'btn btn-outline-secondary btn-block my-3' %>
                             </div>
                         </div>
                         <% end %>
