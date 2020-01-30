@@ -5,7 +5,6 @@ class CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
     @comment.user_id = current_user.id
     @comment.board_id = params[:board_id]
-    binding.pry
     if @comment.save
       redirect_to("/boards/#{@comment.board_id}")
     else

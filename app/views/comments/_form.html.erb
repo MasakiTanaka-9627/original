@@ -1,7 +1,6 @@
-<h2>コメントを入力</h2>
+<h2>コメント</h2>
 <!--引数の順番は親、子-->
 <%= form_for ([@board,@comment]) do |f| %>
-<%= f.label :content %><br>
 <%= f.text_area :content, class: "form-control", size: "10x5" %><br>
 <%= f.submit "送信", class: "btn btn-primary btn-block"%>
 <%end%>

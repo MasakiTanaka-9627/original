@@ -37,6 +37,7 @@ class BoardsController < ApplicationController
   def update
     @board.update(board_params)
     if @board.save
+      flash.now[:success] = '編集に成功しました。'
       redirect_to @current_user
     else
       flash.now[:danger] = '編集に失敗しました。'

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_28_104259) do
+ActiveRecord::Schema.define(version: 2020_01_30_021844) do
 
   create_table "board_tag_relations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "board_id"
@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 2020_01_28_104259) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "password_digest"
+    t.string "profile"
   end
 
   add_foreign_key "board_tag_relations", "boards"
