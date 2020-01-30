@@ -9,7 +9,6 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     @user.update(user_params)
-binding.pry
     if @user.save
       redirect_to current_user
     else

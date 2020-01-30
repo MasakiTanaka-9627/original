@@ -24,7 +24,7 @@
                     <% if @board.user_id == current_user.id %>
                     <%= link_to "編集" ,"/boards/#{@board.id}/edit", class: 'btn btn-outline-primary btn-block' %>
                     <br>
-                    <%= link_to "削除" ,"/boards/#{@board.id}", :method => :delete, class: 'btn btn-outline-secondary btn-block',data: { confirm: '削除しますか？' } %>
+                    <%= link_to "削除" ,"/boards/#{@board.id}", :method => :delete, class: 'btn btn-outline-secondary btn-block mb-3',data: { confirm: '削除しますか？' } %>
                     <% else %>
                     <% end %>
                 </div>
@@ -36,7 +36,7 @@
                     <br>
                     コメント：<%= comment.content %>
                     <% if comment.user_id == current_user.id %>
-                    <%= button_to "削除", board_comment_path(comment), method: :delete, class: 'btn btn-outline-secondary btn-block',data: { confirm: '削除しますか？' } %>
+                    <%= button_to "削除", board_comment_path(comment), method: :delete, class: 'btn btn-outline-secondary btn-block my-3',data: { confirm: '削除しますか？' } %>
                     <% else %>
                     <% end %>
                 </div>
