@@ -5,6 +5,7 @@ class FavoritesController < ApplicationController
     @favorite = Favorite.new(board_id: @board_id, user_id: @user_id)
 
     if @favorite.save
+      flash[:success] = 'いいねしました。'
       redirect_to user_path(current_user)
     end
   end
@@ -12,6 +13,7 @@ class FavoritesController < ApplicationController
   def destroy
     @favorite = Favorite.find(params[:id])
     if @favorite.destroy
+      flash[:success] = 'いいねを解除しました。'
       redirect_to user_path(current_user)
     end
   end

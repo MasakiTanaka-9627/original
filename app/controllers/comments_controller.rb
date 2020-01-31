@@ -6,8 +6,10 @@ class CommentsController < ApplicationController
     @comment.user_id = current_user.id
     @comment.board_id = params[:board_id]
     if @comment.save
+      flash[:success] = 'コメントの投稿に成功しました'
       redirect_to("/boards/#{@comment.board_id}")
     else
+      flash[:danger] = 'コメントの投稿に失敗しました。'
       redirect_to("/boards/#{@comment.board_id}")
     end
   end
@@ -15,6 +17,7 @@ class CommentsController < ApplicationController
   def destroy
     @comment = Comment.find(params[:board_id])
     @comment.destroy
+    flash[:success] = 'コメントを削除しました。'
     redirect_to("/boards/#{params[:id]}")
   end
 
