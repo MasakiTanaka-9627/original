@@ -12,4 +12,12 @@ Rails.application.routes.draw do
   resources :boards do 
     resources :comments, only: [:create, :destroy]
   end
+
+  resources :boards do
+    member do
+      post "add", to: "favorites#create"
+    end
+  end
+
+  resources :favorites, only: [:destroy]
 end

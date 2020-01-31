@@ -33,6 +33,15 @@ class UsersController < ApplicationController
     end
   end
 
+  def like(board)
+    favorites.find_or_create_by(post_id: board.id)
+  end
+
+  def unlike(board)
+    favorite = favorites.find_by(post_id: board.id)
+    favorite.destroy if favorite
+  end
+
   private
 
   def user_params
