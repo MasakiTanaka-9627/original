@@ -1,6 +1,5 @@
 <div class="col-lg-3">
-    <% if logged_in? %>
-    <% else %>
+    <% if !(logged_in?) %>
     <%= render 'layouts/right_login' %>
     <% end %>
     <%= render 'layouts/right_iPhone' %>

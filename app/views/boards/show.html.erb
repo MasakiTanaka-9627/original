@@ -3,6 +3,7 @@
         <div class="row">
             <%= render 'layouts/left' %>
             <div class="col-lg-6">
+            
                 <h2>投稿詳細</h2>
                 <%= render 'board', board: @board%>
                 <%= render "comments/form" %>
@@ -17,6 +18,7 @@
                     <% end %>
                 </div>
                 <% end %>
+
             </div>
             <%= render 'layouts/right' %>
         </div>
