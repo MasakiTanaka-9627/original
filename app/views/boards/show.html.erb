@@ -3,41 +3,17 @@
         <div class="row">
             <%= render 'layouts/left' %>
             <div class="col-lg-6">
-                <div class="box1">
-                    <h2>投稿詳細</h2>
-                    <span class="user">
-                        ユーザー名：<%=  @board.user.name %>
-                    </span>
-                    <br>
-                    <span class="content">
-                        タイトル：<%= @board.title %></span>
-                    <br>
-                    <span class="content">
-                        本文：<%= @board.content %>
-                    </span>
-                    <br>
-                    タグ：
-                    <% @board.tags.each do |tag| %>
-                    <span class='badge badge-primary'><%= tag.name %></span>
-                    <% end %>
-                    <br>
-                    <% if @board.user_id == current_user.id %>
-                    <%= link_to "編集" ,"/boards/#{@board.id}/edit", class: 'btn btn-outline-primary btn-block' %>
-                    <br>
-                    <%= link_to "削除" ,"/boards/#{@board.id}", :method => :delete, class: 'btn btn-outline-secondary btn-block mb-3',data: { confirm: '削除しますか？' } %>
-                    <% else %>
-                    <% end %>
-                </div>
+                <h2>投稿詳細</h2>
+                <%= render 'board', board: @board%>
                 <%= render "comments/form" %>
+                
                 <h2 class="mt-3">コメント一覧</h2>
                 <% @comments.each do |comment| %>
                 <div class="box3">
-                    ユーザー名：<%= comment.user.name %>
-                    <br>
-                    コメント：<%= comment.content %>
+                    <span class="content">ユーザー名：<%= comment.user.name %></span>
+                    <span class="content">コメント：<%= comment.content %></span>
                     <% if comment.user_id == current_user.id %>
                     <%= button_to "削除", board_comment_path(comment), method: :delete, class: 'btn btn-outline-secondary btn-block my-3',data: { confirm: '削除しますか？' } %>
-                    <% else %>
                     <% end %>
                 </div>
                 <% end %>

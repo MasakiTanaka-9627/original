@@ -1,31 +1,18 @@
-<div class="box3">
-    <span class="user">
-        ユーザー名：<%= link_to board.user.name,user_path(id: board.user_id) %>
-    </span>
-    <br>
-    <span class="content">
-        タイトル：<%= board.title %></span>
-    <br>
-    <span class="timestamp">
-        投稿日時：<%= board.created_at.to_s(:datetime_jp) %>
-    </span>
+<div class="box3 mb-3">
+    <span class="user">ユーザー名：<%= link_to board.user.name,user_path(id: board.user_id) %></span>
+    <span class="content">タイトル：<%= board.title %></span>
+    <span class="timestamp">投稿日時：<%= board.created_at.to_s(:datetime_jp) %></span>
     <% if board.tags.present? %>
-    <br>
-    タグ：
-    <% board.tags.each do |tag| %>
+    <span class="tag">タグ：<% board.tags.each do |tag| %></span>
     <span class='badge badge-primary'><%= tag.name %></span>
     <% end %>
     <% else %>
-    <br>
-    <span class="content">
-        本文： <%= board.content %></span>
-    <br>
+    <span class="content">本文： <%= board.content %></span>
     <% end %>
     <div class="my-4">
         <% @likes_count = Favorite.where(board_id: board.id).count%>
-        いいね数：<%= @likes_count %>
+        <span class="content">いいね数：<%= @likes_count %></span>
     </div>
-
     <div>
         <% favorite = Favorite.find_by(board_id: board.id)%>
         <% if favorite.nil? %>

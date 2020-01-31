@@ -19,7 +19,7 @@
                             <h2 class="mr-2 mt-2">自己紹介文</h2>
                             <p><%= @user.profile %></p>
                             <div class="row col-6 offset-3">
-                            <%= link_to "プロフィール編集",edit_user_path,class: 'btn btn-outline-secondary btn-block my-2' %>
+                                <%= link_to "プロフィール編集",edit_user_path,class: 'btn btn-outline-secondary btn-block my-2' %>
                             </div>
                         </div>
                     </div>
@@ -51,11 +51,12 @@
                         <div class="box1 pb-4">
                             まだ投稿はありません。
                         </div>
-                        <% end %>
                     </div>
+                    <% end %>
                 </div>
             </div>
-            <%= render 'layouts/right' %>
         </div>
+        <%= render 'layouts/right' %>
     </div>
+</div>
 </div>

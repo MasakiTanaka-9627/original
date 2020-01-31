@@ -3,29 +3,7 @@
         <div class="row">
             <div class="col-lg-6 offset-lg-3">
                 <h2>登録フォーム</h2>
-                <%= form_for(@user) do |f| %>
-                <%= render 'shared/error_messages' %>
-                <div class="form-group">
-                    <%= f.label :name, 'ニックネーム' %>
-                    <%= f.text_field :name, class: 'form-control' %>
-                </div>
-                <div class="form-group">
-                    <%= f.label :email, 'メールアドレス' %>
-                    <%= f.email_field :email, class: 'form-control' %> </div>
-
-                <div class="form-group">
-                    <%= f.label :password, 'パスワード' %>
-                    <%= f.password_field :password, class: 'form-control' %>
-                </div>
-
-                <div class="form-group">
-                    <%= f.label :password_confirmation, 'パスワード（もう１度ご入力ください）' %>
-                    <%= f.password_field :password_confirmation, class: 'form-control' %>
-                </div>
-                <div class="col-lg-8 offset-lg-2">
-                    <%= f.submit '登録する', class: 'btn btn-primary btn-block' %>
-                </div>
-                <% end %>
+                <%= render 'form_user'%>
             </div>
         </div>
     </div>

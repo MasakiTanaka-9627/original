@@ -2,8 +2,6 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   include SessionsHelper
 
-  before_filter :set_request_from
-
   # どこのページからリクエストが来たか保存しておく
   def set_request_from
     if session[:request_from]
