@@ -1,6 +1,7 @@
 <%= form_for(@user) do |f| %>
 
-<%= render 'shared/error_messages' %>
+<%= render 'layouts/error_messages', model: f.object %>
+
 <div class="form-group">
     <%= f.label :name, 'ユーザー名' %>
     <%= f.text_field :name, class: 'form-control' %>
@@ -16,17 +17,15 @@
 </div>
 
 <% if !(logged_in?)%>
+    <div class="form-group">
+        <%= f.label :password, 'パスワード' %>
+        <%= f.password_field :password, class: 'form-control' %>
+    </div>
 
-<div class="form-group">
-    <%= f.label :password, 'パスワード' %>
-    <%= f.password_field :password, class: 'form-control' %>
-</div>
-
-<div class="form-group">
-    <%= f.label :password_confirmation, 'パスワード（もう１度ご入力ください）' %>
-    <%= f.password_field :password_confirmation, class: 'form-control' %>
-</div>
-
+    <div class="form-group">
+        <%= f.label :password_confirmation, 'パスワード（もう１度ご入力ください）' %>
+        <%= f.password_field :password_confirmation, class: 'form-control' %>
+    </div>
 <% end %>
 
 <div class="col-lg-8 offset-lg-2">

@@ -20,8 +20,8 @@ class BoardsController < ApplicationController
     if @board.save
       redirect_to @current_user
     else
-      flash.now[:danger] = '投稿に失敗しました。'
-      render action: :new
+      flash[:danger] = '投稿に失敗しました。'
+      redirect_to new_board_path, flash: { error: @board.errors.full_messages}
     end
   end
 

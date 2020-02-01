@@ -5,6 +5,7 @@
                 <h2>ログインフォーム</h2>
                 <div class="box">
                     <%= form_for(:session, url: login_path) do |f| %>
+                    <%= render 'layouts/error_messages', model: f.object %>
                     <div class="form-group">
                         <%= f.label :email %>
                         <%= f.email_field :email, class: 'form-control', placeholder: 'admin@rails.com'%>
@@ -26,7 +27,7 @@
                 <div class="box">
                     <p>会員登録がお済みではない方はこちらより登録可能です。</p>
                     <div class="col-8 offset-2">
-                        <%= link_to "無料会員登録画面へ",signup_path , class: 'btn btn-secondary  btn-block' %>
+                        <%= link_to "無料会員登録画面へ", new_user_path, class: 'btn btn-secondary  btn-block' %>
                     </div>
                 </div>
             </div>

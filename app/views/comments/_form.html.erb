@@ -1,5 +1,7 @@
 <h2>コメント</h2>
-<%= form_for ([@board,@comment]) do |f| %>
-<%= f.text_area :content, class: "form-control", size: "10x5" %><br>
+
+<%= form_for([@board,@comment]) do |f| %>
+<%= render 'layouts/error_messages', model: f.object %>
+<div class="mb-2"><%= f.text_area :content, class: "form-control", size: "10x5" %></div>
 <%= f.submit "送信", class: "btn btn-primary btn-block"%>
 <%end%>

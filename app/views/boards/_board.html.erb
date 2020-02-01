@@ -15,22 +15,22 @@
         <span class="content">いいね数：<%= @likes_count %></span>
     </div>
     <div>
-        <% favorite = Favorite.find_by(board_id: board.id) %>
-        <% if favorite.nil? %>
+        <% favorite = Favorite.where(board_id: board.id) %>
+        <% if favorite.empty? %>
         <%= link_to "いいねします", add_board_path(board), method: :post %>
         <% else %>
-        <%  if current_user.id == favorite.user_id %>
-        <%= link_to "いいねを解除します",favorite_path(favorite), method: :delete %>
-        <% else %>
+        <%  if favorite.find_by(user_id: current_user.id).nil? %>
         <%= link_to "いいねします！", add_board_path(board), method: :post %>
+        <% else %>
+        <%= link_to "いいねを解除します", delete_board_path(board), method: :delete %>
         <% end %>
         <% end %>
     </div>
     <div class="mx-5">
-        <%= link_to "詳細" ,"/boards/#{board.id}", class: 'btn btn-outline-primary btn-block my-2' %>
+        <%= link_to "詳細", board_path(board.id), class: 'btn btn-outline-primary btn-block my-2' %>
         <% if board.user_id == current_user.id %>
-        <%= link_to "編集" ,"/boards/#{board.id}/edit", class: 'btn btn-outline-primary btn-block my-1' %>
-        <%= link_to "削除" ,"/boards/#{board.id}", :method => :delete, class: 'btn btn-outline-secondary btn-block my-3',data: { confirm: '削除しますか？' } %>
+        <%= link_to "編集", edit_board_path(board.id), class: 'btn btn-outline-primary btn-block my-1' %>
+        <%= link_to "削除" , board_path(board.id), :method => :delete, class: 'btn btn-outline-secondary btn-block my-3',data: { confirm: '削除しますか？' } %>
         <% else %>
         <% end %>
     </div>

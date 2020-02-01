@@ -6,15 +6,15 @@ class FavoritesController < ApplicationController
 
     if @favorite.save
       flash[:success] = 'いいねしました。'
-      redirect_to user_path(current_user)
+      redirect_back(fallback_location: root_path)
     end
   end
 
-  def destroy
-    @favorite = Favorite.find(params[:id])
+  def destory
+    @favorite = Favorite.find_by(board_id: params[:id], user_id: current_user)
     if @favorite.destroy
       flash[:success] = 'いいねを解除しました。'
-      redirect_to user_path(current_user)
+      redirect_back(fallback_location: root_path)
     end
   end
 end

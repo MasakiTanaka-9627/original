@@ -7,10 +7,10 @@ class CommentsController < ApplicationController
     @comment.board_id = params[:board_id]
     if @comment.save
       flash[:success] = 'コメントの投稿に成功しました'
-      redirect_to("/boards/#{@comment.board_id}")
+      redirect_to board_path(@comment.board_id)
     else
       flash[:danger] = 'コメントの投稿に失敗しました。'
-      redirect_to("/boards/#{@comment.board_id}")
+      redirect_to board_path(@comment.board_id), flash: { error: @comment.errors.full_messages}
     end
   end
 
