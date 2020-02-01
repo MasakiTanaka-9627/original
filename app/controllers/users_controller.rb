@@ -31,7 +31,7 @@ class UsersController < ApplicationController
       redirect_to @user
     else
       flash[:danger] = 'ユーザーの登録に失敗しました。'
-      redirect_to new_user_path
+      redirect_to new_user_path, flash: { error: @user.errors.full_messages}
     end
   end
 
