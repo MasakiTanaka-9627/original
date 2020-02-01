@@ -10,7 +10,7 @@ class Board < ApplicationRecord
   has_many :board_tag_relations, dependent: :destroy
   has_many :tags, through: :board_tag_relations, dependent: :destroy
 
-  has_many :favorites
+  has_many :favorites, dependent: :destroy
   has_many :users, through: :favorites
 
   scope :search, -> (keyword) { where('title LIKE ?', "%#{keyword}%") }

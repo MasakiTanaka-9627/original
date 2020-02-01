@@ -19,7 +19,9 @@
                             <h2 class="mr-2 mt-2">自己紹介文</h2>
                             <p><%= @user.profile %></p>
                             <div class="row col-6 offset-3">
+                                <% if current_user.id == @user.id %>
                                 <%= link_to "プロフィール編集", edit_user_path, class: 'btn btn-outline-secondary btn-block my-2' %>
+                                <% end %>
                             </div>
                         </div>
                     </div>

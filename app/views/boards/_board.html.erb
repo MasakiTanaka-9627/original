@@ -1,6 +1,7 @@
 <div class="box3 mb-3">
-    <div class="user">ユーザー名：<%= link_to board.user.name,user_path(id: board.user_id) %></div>
-    <div class="content">タイトル：<%= board.title %></div>
+    <div class="user">ユーザー名：<%= link_to board.user.name, user_path(id: board.user_id) %></div>
+    <div class="title">タイトル：<%= board.title %></div>
+        <div class="content">board.id：<%= board.id %></div>
     <div class="timestamp">投稿日時：<%= board.created_at.to_s(:datetime_jp) %></div>
     <% if board.tags.present? %>
     <div>
@@ -11,19 +12,14 @@
     <% end %>
     <span class="content">本文： <%= board.content %></span>
     <div class="my-4">
-        <% @likes_count = Favorite.where(board_id: board.id).count %>
-        <span class="content">いいね数：<%= @likes_count %></span>
+        <% favorite = Favorite.where(board_id: board.id) %>
+        <span class="content">いいね数：<%= favorite.count %></span>
     </div>
     <div>
-        <% favorite = Favorite.where(board_id: board.id) %>
-        <% if favorite.empty? %>
-        <%= link_to "いいねします", add_board_path(board), method: :post %>
-        <% else %>
         <%  if favorite.find_by(user_id: current_user.id).nil? %>
         <%= link_to "いいねします！", add_board_path(board), method: :post %>
         <% else %>
         <%= link_to "いいねを解除します", delete_board_path(board), method: :delete %>
-        <% end %>
         <% end %>
     </div>
     <div class="mx-5">
@@ -31,7 +27,6 @@
         <% if board.user_id == current_user.id %>
         <%= link_to "編集", edit_board_path(board.id), class: 'btn btn-outline-primary btn-block my-1' %>
         <%= link_to "削除" , board_path(board.id), :method => :delete, class: 'btn btn-outline-secondary btn-block my-3',data: { confirm: '削除しますか？' } %>
-        <% else %>
         <% end %>
     </div>
 </div>

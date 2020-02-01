@@ -9,18 +9,12 @@
                 <%= render "comments/form" %>
 
                 <h2 class="mt-3">コメント一覧</h2>
-                <% @comments.each do |comment| %>
-                <div class="box3">
-                    <div>ユーザー名：<%= comment.user.name %></div>
-                    <div>コメント：<%= comment.content %></div>
-                        <% if comment.user_id == current_user.id %>
-                        <%= button_to "削除", board_comment_path(comment), method: :delete, class: 'btn btn-outline-secondary btn-block my-3',data: { confirm: '削除しますか？' } %>
-                        <% end %>
-                    </div>
-                    <% end %>
+                <% @comments.each do |comment|%>
+                <%= render comment %>
+                <% end %>
 
-                </div>
-                <%= render 'layouts/right' %>
             </div>
+            <%= render 'layouts/right' %>
         </div>
+    </div>
 </body>

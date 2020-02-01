@@ -18,7 +18,5 @@ Rails.application.routes.draw do
       delete "delete", to: "favorites#destory"
     end
   end
-
-  resources :favorites, only: [:destroy, :create]
 end
 

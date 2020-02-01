@@ -37,17 +37,17 @@ class BoardsController < ApplicationController
   def update
     @board.update(board_params)
     if @board.save
-      flash.now[:success] = '編集に成功しました。'
+      flash[:success] = '編集に成功しました。'
       redirect_to @current_user
     else
-      flash.now[:danger] = '編集に失敗しました。'
-      render action: :new
+      flash[:danger] = '編集に失敗しました。'
+      redirect_to edit_board_path(@board.id), flash: { error: @board.errors.full_messages}
     end
   end
 
   def destroy
     @board.destroy
-    redirect_to @current_user
+    redirect_back(fallback_location: root_path)
   end
 
   private
