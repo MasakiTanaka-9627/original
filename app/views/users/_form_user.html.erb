@@ -2,7 +2,7 @@
 
 <%= render 'shared/error_messages' %>
 <div class="form-group">
-    <%= f.label :name, 'ニックネーム' %>
+    <%= f.label :name, 'ユーザー名' %>
     <%= f.text_field :name, class: 'form-control' %>
 </div>
 <div class="form-group">
@@ -15,6 +15,8 @@
     <%= f.text_area :profile, class: 'form-control', size: "10x5" %>
 </div>
 
+<% if !(logged_in?)%>
+
 <div class="form-group">
     <%= f.label :password, 'パスワード' %>
     <%= f.password_field :password, class: 'form-control' %>
@@ -25,9 +27,10 @@
     <%= f.password_field :password_confirmation, class: 'form-control' %>
 </div>
 
+<% end %>
+
 <div class="col-lg-8 offset-lg-2">
     <%= f.submit '登録する', class: 'btn btn-primary btn-block' %>
 </div>
-
 
 <% end %>
