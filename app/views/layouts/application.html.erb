@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <title>App</title>
-  <%= csrf_meta_tags %>
+  <title><%= full_title(yield(:title)) %></title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 </head>
 <%= render 'layouts/header' %>
+
 <body>
   <% flash.each do |message_type, message| %>
   <% if message_type == "error"%>
@@ -17,4 +18,5 @@
   <%= yield %>
 </body>
 <%= render 'layouts/footer' %>
+
 </html>
