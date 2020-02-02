@@ -1,4 +1,6 @@
 class FavoritesController < ApplicationController
+  protect_from_forgery :except => [:create, :destroy]
+
   def create
     @user_id = current_user.id
     @board_id = Board.find(params[:id]).id
@@ -10,7 +12,7 @@ class FavoritesController < ApplicationController
     end
   end
 
-  def destory
+  def destroy
     @favorite = Favorite.find_by(board_id: params[:id], user_id: current_user)
     if @favorite.destroy
       flash[:success] = 'いいねを解除しました。'

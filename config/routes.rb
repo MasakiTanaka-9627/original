@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   resources :boards do
     member do
       post "add", to: "favorites#create"
-      delete "delete", to: "favorites#destory"
+      delete "delete", to: "favorites#destroy"
     end
   end
 end
