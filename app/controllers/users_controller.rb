@@ -43,7 +43,7 @@ class UsersController < ApplicationController
     favorite = favorites.find_by(post_id: board.id)
     favorite.destroy if favorite
   end
-
+  
   private
 
   def user_params
