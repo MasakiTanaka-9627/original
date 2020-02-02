@@ -1,33 +1,13 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-9">
-            <%= render 'profile_user', { user: @user } %>
+            <%= render 'profile_user', user: @user %>
             <div class="row">
                 <div class="col-lg-4 d-none d-lg-block">
                     <%= render 'layouts/left_reccomend'%>
                 </div>
                 <div class="col-lg-8">
-                    <% if @user.id == current_user.id %>
-                    <h2 class="mb-3">投稿</h2>
-                    <div class="mx-5">
-                        <%= link_to "いまなにしていますか？", new_board_path, class: 'btn btn-outline-secondary btn-block my-3' %>
-                    </div>
-                    <% end %>
-                    <% if @user.boards.any? %>
-                    <h2>投稿一覧</h2>
-                    <%= paginate @boards %>
-                    <div class="mx-1">
-                        <%= render @boards %>
-                    </div>
-                    <%= paginate @boards %>
-                    <% else %>
-                    <h2>投稿一覧</h2>
-                    <div class="mx-1">
-                        <div class="pb-4">
-                            まだ投稿はありません。
-                        </div>
-                    </div>
-                    <% end %>
+                    <%= render 'shared/board_list', boards: @boards%>
                 </div>
             </div>
         </div>
