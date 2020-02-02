@@ -1,3 +1,7 @@
-<div class="box1">
-    <h2>ゲームランキング|iPhone</h2>
-</div>
+<h2 class>ゲームランキング|iPhone(仮)</h2>
+<ul class="list-group">
+    <% 5.times do |n| %>
+    <li class="list-group-item"><%= image_tag "recomend_game/Image#{n}.jpeg", :size => '50x50' %><%= "ゲーム#{n}" %>
+    </li>
+    <% end %>
+</ul>

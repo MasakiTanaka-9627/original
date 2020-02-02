@@ -1,8 +1,6 @@
-<div class="box1">
-    <h2>おすすめゲーム</h2>
-    <ul class="list-group" style="max-width: 400px;">
-        <% 32.times do |n| %>
-        <li class="list-group-item"><%= image_tag "recomend_game/Image#{n}.jpeg", :size => '50x50' %> ゲーム</li>
-        <% end %>
-    </ul>
-</div>
+<h2>おすすめゲーム</h2>
+<ul class="list-group">
+    <% 32.times do |n| %>
+    <li class="list-group-item"><%= image_tag "recomend_game/Image#{n}.jpeg", :size => '50x50' %><%= "ゲーム#{n}" %></li>
+    <% end %>
+</ul>

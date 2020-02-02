@@ -2,6 +2,8 @@
     <div>ユーザー名：<%= comment.user.name %></div>
     <div>コメント：<%= comment.content %></div>
     <% if comment.user_id == current_user.id %>
+    <div class="col-10 offset-1">
     <%= button_to "削除", board_comment_path(comment), method: :delete, class: 'btn btn-outline-secondary btn-block my-3',data: { confirm: '削除しますか？' } %>
+    </div>
     <% end %>
 </div>

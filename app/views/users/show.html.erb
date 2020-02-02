@@ -1,23 +1,23 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-9">
-            <div class="box2">
+            <div class="box_profile">
                 <div class="row">
-                    <div class="col-lg-3">
+                    <div class="col-lg-3 mb-3">
                         <%= image_tag 'usersample.png',size: '150x150' %>
                     </div>
                     <div class="col-lg-9">
                         <div class="row">
                             <div class="col-lg-6">
-                                <h2 class="mr-2">名前</h2><%= @user.name %>
+                                <h2 class="mx-2">名前</h2><p class="mx-2"><%= @user.name %></p>
                             </div>
                             <div class="col-lg-6">
-                                <h2 class="mr-2">email</h2><%= @user.email %>
+                                <h2 class="mx-2">email</h2><p class="mx-2"><%= @user.email %></p>
                             </div>
                         </div>
                         <div>
-                            <h2 class="mr-2 mt-2">自己紹介文</h2>
-                            <p><%= @user.profile %></p>
+                            <h2 class="mx-2 mt-2">自己紹介文</h2>
+                            <p class="mx-2"><%= @user.profile %></p>
                             <div class="row col-6 offset-3">
                                 <% if current_user.id == @user.id %>
                                 <%= link_to "プロフィール編集", edit_user_path, class: 'btn btn-outline-secondary btn-block my-2' %>
@@ -29,13 +29,11 @@
             </div>
             <div class="row">
                 <div class="col-lg-4">
-                    <div class="box1">
-                        <h2>おすすめゲーム</h2>
-                    </div>
+                    <%= render 'layouts/left_reccomend' %>
                 </div>
                 <div class="col-lg-8">
                     <% if @user.id == current_user.id %>
-                    <h2 class="mb-3">投稿フォーム</h2>
+                    <h2 class="mb-3">投稿</h2>
                     <div class="mx-5">
                         <%= link_to "いまなにしていますか？", new_board_path, class: 'btn btn-outline-secondary btn-block my-3' %>
                     </div>
@@ -50,7 +48,7 @@
                     <% else %>
                     <h2>投稿一覧</h2>
                     <div class="mx-1">
-                        <div class="box1 pb-4">
+                        <div class="pb-4">
                             まだ投稿はありません。
                         </div>
                     </div>
