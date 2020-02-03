@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_02_120934) do
+ActiveRecord::Schema.define(version: 2020_01_31_095405) do
 
-  create_table "board_tag_relations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "board_tag_relations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin", force: :cascade do |t|
     t.bigint "board_id"
     t.bigint "tag_id"
     t.datetime "created_at", null: false
@@ -21,17 +21,16 @@ ActiveRecord::Schema.define(version: 2020_02_02_120934) do
     t.index ["tag_id"], name: "index_board_tag_relations_on_tag_id"
   end
 
-  create_table "boards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "boards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin", force: :cascade do |t|
     t.text "content"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "title"
-    t.integer "likes_count", default: 0, null: false
     t.index ["user_id"], name: "index_boards_on_user_id"
   end
 
-  create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin", force: :cascade do |t|
     t.string "content"
     t.bigint "user_id"
     t.bigint "board_id"
@@ -41,7 +40,7 @@ ActiveRecord::Schema.define(version: 2020_02_02_120934) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
-  create_table "favorites", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "favorites", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "board_id"
     t.datetime "created_at", null: false
@@ -51,13 +50,13 @@ ActiveRecord::Schema.define(version: 2020_02_02_120934) do
     t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
-  create_table "tags", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "tags", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin", force: :cascade do |t|
     t.string "name"
     t.string "email"
     t.datetime "created_at", null: false

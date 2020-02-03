@@ -16,7 +16,7 @@ default: &default
   username: root
   password: password
   host: db
-
+  
 development:
   <<: *default
   database: app_development

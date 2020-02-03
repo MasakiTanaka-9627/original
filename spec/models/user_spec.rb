@@ -2,13 +2,12 @@ require "rails_helper"
 
 RSpec.describe User, type: :model do
   it "バリデーションテストに成功する" do
-    user = User.new(
+    user = User.new(   
       name: "exampletest",
-      email: "admin@rails.com",
+      email:  "aaaaa@rails.com",
       profile: "testprofile",
-      password: "foobarexample",
-      password_confirmation: "foobarexample",
-    )
+      password: "foobarexample"
+      )
     expect(user).to be_valid
   end
 end
