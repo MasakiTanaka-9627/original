@@ -4,7 +4,6 @@ class Board < ApplicationRecord
   
   validates :title, length: { in: 5..15 } 
   validates :content, length: { minimum: 5 }
-  validates :user_id, presence: true
 
   belongs_to :user
   has_many :users, through: :favorites
