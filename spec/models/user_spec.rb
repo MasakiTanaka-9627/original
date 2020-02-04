@@ -1,7 +1,6 @@
 require "rails_helper"
 
 RSpec.describe User, type: :model do
-
     
   it "バリデーションテストに成功する" do
     user = User.new(   

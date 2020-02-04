@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'relationships/create'
+  get 'relationships/destroy'
   root "static_pages#home"
 
   get "/login", to: "sessions#new"
@@ -8,7 +10,7 @@ Rails.application.routes.draw do
   resources :users
   resources :boards
 
-  resources :boards do 
+  resources :boards do
     resources :comments, only: [:create, :destroy]
   end
 
@@ -18,5 +20,13 @@ Rails.application.routes.draw do
       delete "delete", to: "favorites#destroy"
     end
   end
-end
 
+  resources :users do
+    resource :relationships, only: [:create, :destroy]
+    member do
+      get "follows"  
+      get "followers"
+    end
+  end
+
+end

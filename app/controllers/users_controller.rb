@@ -1,4 +1,8 @@
 class UsersController < ApplicationController
+
+  def index    
+  end
+
   def new
     @user = User.new
   end
@@ -33,6 +37,16 @@ class UsersController < ApplicationController
       flash[:danger] = 'ユーザーの登録に失敗しました。'
       redirect_to new_user_path, flash: { error: @user.errors.full_messages}
     end
+  end
+
+  def follows
+    user = User.find(params[:id])
+    @users = user.followings
+  end
+
+  def followers
+    user = User.find(params[:id])
+    @users = user.followers
   end
 
   private

@@ -1,15 +1,30 @@
 <div class="box_profile">
     <div class="row">
         <div class="col-lg-3 mb-3">
-            <%= image_tag 'usersample.png',size: '150x150' %>
+            <div>
+                <%= image_tag 'usersample.png',size: '150x150' %>
+            </div>
+            <div class="row">
+                <div class="col-lg-10 col-lg-offset-1">
+                    <% if user.followed_by?(current_user) %>
+                    <%# <%=link_to "フォロー済み", user_relationships_path(user.id), method: :delete %>
+                    <%= link_to "フォロー済み",user_relationships_path(user.id), method: :delete , class: 'btn btn-outline-secondary btn-block mx-3 mt-4' %>
+                    <% else %>
+                    <%= link_to "フォローする", user_relationships_path(user.id), method: :post , class: 'btn btn-outline-primary btn-block mx-3 mt-4' %>
+                    <%# <%=link_to "フォローする", user_relationships_path(user.id), method: :post %>
+                    <% end %>
+                </div>
+            </div>
         </div>
         <div class="col-lg-9">
             <div class="row">
                 <div class="col-lg-6">
-                    <h2 class="mx-2">名前</h2><p class="mx-2"><%= user.name %></p>
+                    <h2 class="mx-2">名前</h2>
+                    <p class="mx-2"><%= user.name %></p>
                 </div>
                 <div class="col-lg-6">
-                    <h2 class="mx-2">email</h2><p class="mx-2"><%= user.email %></p>
+                    <h2 class="mx-2">email</h2>
+                    <p class="mx-2"><%= user.email %></p>
                 </div>
             </div>
             <div>
