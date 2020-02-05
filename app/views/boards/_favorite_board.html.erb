@@ -1,0 +1,21 @@
+<div class="box3 mb-3">
+    <div class="user">ユーザー名：<%= link_to board.user.name, user_path(id: board.user_id) %></div>
+    <div class="title">タイトル：<%= board.title %></div>
+        <div class="content">board.id：<%= board.id %></div>
+    <div class="timestamp">投稿日時：<%= board.created_at.to_s(:datetime_jp) %></div>
+    <% if board.tags.present? %>
+    <div>
+        <span class="tag">タグ：<% board.tags.each do |tag| %></span>
+        <span class='badge badge-primary'><%= tag.name %></span>
+        <% end %>
+    </div>
+    <% end %>
+    <span class="content">本文： <%= board.content %></span>
+    <div class="my-4">
+        <% favorite = Favorite.where(board_id: board.id) %>
+        <span class="content">いいね数：<%= favorite.count %></span>
+    </div>
+    <div class="mx-5">
+        <%= link_to "詳細", board_path(board.id), class: 'btn btn-outline-primary btn-block my-2' %>
+    </div>
+</div>

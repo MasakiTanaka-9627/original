@@ -49,7 +49,11 @@ class UsersController < ApplicationController
     @users = user.followers
   end
 
-  private
+  def favorites
+    @favorites = Favorite.where(user_id: current_user.id)
+  end
+  
+    private
 
   def user_params
     params.require(:user).permit(:name, :email, :profile, :password, :password_confirmation)
