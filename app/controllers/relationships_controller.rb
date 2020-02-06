@@ -10,4 +10,10 @@ class RelationshipsController < ApplicationController
     follow.destroy
     redirect_to user_path(params[:user_id])
   end
+
+  def show 
+    @user = User.find(current_user.id)
+    @follow = Relationship.where(following_id: current_user.id)
+  end 
+
 end

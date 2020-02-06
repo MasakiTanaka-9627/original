@@ -12,7 +12,7 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    @user.update(user_params)
+    @user.update!(user_params)
     if @user.save
       flash[:success] = '編集に成功しました'
       redirect_to current_user
@@ -51,6 +51,7 @@ class UsersController < ApplicationController
 
   def favorites
     @favorites = Favorite.where(user_id: current_user.id)
+    @user = User.find(params[:id])
   end
   
     private
