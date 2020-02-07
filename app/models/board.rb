@@ -1,5 +1,7 @@
 class Board < ApplicationRecord
+  
   default_scope -> { order(created_at: :desc) }
+
   scope :search, -> (keyword) { where('title LIKE ?', "%#{keyword}%") }
   
   validates :title, length: { in: 5..15 } 
