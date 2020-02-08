@@ -3,9 +3,11 @@ class BoardsController < ApplicationController
 
   def index
     if params[:keyword].blank?
-      @boards = Board.all.page(params[:page]).per(10)
+      @boards = params[:tag_id].present? ? Tag.find(params[:tag_id]).boards : Board.all
+      
+      @boards = @boards.page(params[:page]).per(10)
     else 
-      @boards =  Board.search(params[:keyword]).page(params[:page]).per(10)
+        @boards =  Board.search(params[:keyword]).page(params[:page]).per(10)
     end
   end
 
@@ -15,10 +17,10 @@ class BoardsController < ApplicationController
 
   def create
     @board = Board.new(board_params)
-    @board.user_id = @current_user.id
+    @board.user_id = current_user.id
 
     if @board.save
-      redirect_to @current_user
+      redirect_to current_user
     else
       flash[:danger] = '投稿に失敗しました。'
       redirect_to new_board_path, flash: { error: @board.errors.full_messages}
@@ -38,7 +40,7 @@ class BoardsController < ApplicationController
     @board.update(board_params)
     if @board.save
       flash[:success] = '編集に成功しました。'
-      redirect_to @current_user
+      redirect_to current_user
     else
       flash[:danger] = '編集に失敗しました。'
       redirect_to edit_board_path(@board.id), flash: { error: @board.errors.full_messages}

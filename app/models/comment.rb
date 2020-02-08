@@ -1,7 +1,8 @@
 class Comment < ApplicationRecord
-  validates :content, presence: true
-
   default_scope -> { order(created_at: :desc) }
+
+  validates :content, length: { minimum: 5 }
+
   belongs_to :user
   belongs_to :board
 end

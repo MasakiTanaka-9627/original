@@ -1,4 +1,9 @@
 class UsersController < ApplicationController
+
+  def index    
+    @users = User.all
+  end
+
   def new
     @user = User.new
   end
@@ -8,7 +13,7 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    @user.update(user_params)
+    @user.update!(user_params)
     if @user.save
       flash[:success] = '編集に成功しました'
       redirect_to current_user
@@ -35,19 +40,24 @@ class UsersController < ApplicationController
     end
   end
 
-  def like(board)
-    favorites.find_or_create_by(post_id: board.id)
+  def follows
+    user = User.find(params[:id])
+    @users = user.followings
   end
 
-  def unlike(board)
-    favorite = favorites.find_by(post_id: board.id)
-    favorite.destroy if favorite
+  def followers
+    user = User.find(params[:id])
+    @users = user.followers
   end
 
-  private
+  def favorites
+    @favorites = Favorite.where(user_id: current_user.id)
+    @user = User.find(params[:id])
+  end
+  
+    private
 
   def user_params
     params.require(:user).permit(:name, :email, :profile, :password, :password_confirmation)
   end
-
 end

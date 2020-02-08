@@ -6,25 +6,26 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.create!(name: "Example User",
+User.create!(name: "ExampleUser",
              email: "admin@rails.com",
-             password: "foobar",
-             password_confirmation: "foobar")
-
-users = User.order(:created_at).take(6)
+             profile: "adminprofile",
+             password: "foobaradmin",
+             password_confirmation: "foobaradmin"
+            )
 
 5.times do |num|
-  User.create(name: "UserID#{num}",
+  User.create!(name: "TestUserID#{num}",
               email: "example#{num}@rails.com",
-              password: "foobar#{num}",
-              password_confirmation: "foobar#{num}")
+              password: "foobartest#{num}",
+              profile: "Testprofile#{num}",
+              password_confirmation: "foobartest#{num}")
 end
 
-5.times do |user|
-  5.times do |num|
-    Board.create(title: "BoardID:#{num}_UserID:#{user}",
+3.times do |user|
+  3.times do |num|
+    Board.create!(title: "BoardID:#{num}",
                 content: "掲示板#{num}_#{user}",
-                user_id: "#{user}")
+                user_id: user+1)
   end
 end
 

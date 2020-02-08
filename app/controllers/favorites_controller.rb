@@ -2,9 +2,8 @@ class FavoritesController < ApplicationController
   protect_from_forgery :except => [:create, :destroy]
 
   def create
-    @user_id = current_user.id
-    @board_id = Board.find(params[:id]).id
-    @favorite = Favorite.new(board_id: @board_id, user_id: @user_id)
+    board_id = Board.find(params[:id]).id
+    @favorite = Favorite.new(board_id: board_id, user_id: current_user.id)
 
     if @favorite.save
       flash[:success] = 'いいねしました。'

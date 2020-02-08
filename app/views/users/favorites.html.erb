@@ -1,0 +1,29 @@
+<% provide(:title, "お気に入り掲示板") %>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-9">
+            <%= render 'profile_user', user: @user %>
+            <div class="row">
+                <div class="col-lg-4 d-none d-lg-block">
+                    <%= render 'layouts/left_reccomend'%>
+                </div>
+                <div class="col-lg-8">
+                    <% if logged_in?%>
+                    <h2>投稿</h2>
+                    <div class="mx-5">
+                        <%= link_to "いまなにしていますか？",new_board_path,class: 'btn btn-outline-secondary btn-block my-3' %>
+                    </div>
+                    <% end %>
+                    <h2>お気に入り投稿一覧</h2>
+                    <% @favorites.each do |fav|%>
+                    <% board = Board.find(fav.board_id) %> 
+                    <%= render board %>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+        <%= render 'layouts/right' %>
+    </div>
+</div>
+</div>

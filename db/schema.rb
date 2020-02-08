@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_31_095405) do
+ActiveRecord::Schema.define(version: 2020_02_04_104715) do
 
   create_table "board_tag_relations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "board_id"
@@ -27,7 +27,6 @@ ActiveRecord::Schema.define(version: 2020_01_31_095405) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "title"
-    t.integer "likes_count", default: 0, null: false
     t.index ["user_id"], name: "index_boards_on_user_id"
   end
 
@@ -51,13 +50,11 @@ ActiveRecord::Schema.define(version: 2020_01_31_095405) do
     t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
-  create_table "like_boards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "board_id"
-    t.bigint "user_id"
+  create_table "relationships", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "following_id"
+    t.integer "follower_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["board_id"], name: "index_like_boards_on_board_id"
-    t.index ["user_id"], name: "index_like_boards_on_user_id"
   end
 
   create_table "tags", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -82,6 +79,4 @@ ActiveRecord::Schema.define(version: 2020_01_31_095405) do
   add_foreign_key "comments", "users"
   add_foreign_key "favorites", "boards"
   add_foreign_key "favorites", "users"
-  add_foreign_key "like_boards", "boards"
-  add_foreign_key "like_boards", "users"
 end

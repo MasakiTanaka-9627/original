@@ -1,0 +1,13 @@
+<%# <% user = User.find(follows.follwer_id)%>
+<% follows.length.times do |num| %>
+<% user = User.find(follows[num].follower_id) %>
+<div class="box3 mb-3">
+    <div class="user">ユーザー名：<%= user.name %></div>
+    <div class="content">自己紹介文：<%= user.profile %></div>
+    <div class="content">ユーザーID：<%= user.id %></div>
+    <div class="row col-8 offset-2">
+        <%= link_to "フォロー済み",user_relationships_path(user.id), method: :delete , class: 'btn btn-outline-secondary btn-block' %>
+        <%= link_to "詳細", user_path(user), class: 'btn btn-outline-primary btn-block my-2' %>
+    </div>
+</div>
+<% end %>

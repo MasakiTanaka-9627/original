@@ -11,9 +11,11 @@
     </div>
     <% end %>
     <span class="content">本文： <%= board.content %></span>
-    <div class="my-4">
+    <div class="my-3">
         <% favorite = Favorite.where(board_id: board.id) %>
-        <span class="content">いいね数：<%= favorite.count %></span>
+        <div class="content">いいね数：<%= favorite.count %></div>
+        <% comment = Comment.where(board_id: board.id) %>
+        <div class="content">コメント数：<%= comment.count %></div>
     </div>
     <div>
         <%  if favorite.find_by(user_id: current_user.id).nil? %>
