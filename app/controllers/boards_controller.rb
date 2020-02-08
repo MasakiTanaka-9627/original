@@ -3,9 +3,11 @@ class BoardsController < ApplicationController
 
   def index
     if params[:keyword].blank?
-      @boards = Board.all.page(params[:page]).per(10)
+      @boards = params[:tag_id].present? ? Tag.find(params[:tag_id]).boards : Board.all
+      
+      @boards = @boards.page(params[:page]).per(10)
     else 
-      @boards =  Board.search(params[:keyword]).page(params[:page]).per(10)
+        @boards =  Board.search(params[:keyword]).page(params[:page]).per(10)
     end
   end
 

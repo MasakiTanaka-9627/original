@@ -6,17 +6,21 @@
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-                <div class="dropdown">
-                    <button class="btn btn-outline-secondary dropdown-toggle mx-2" type="button" id="dropdownMenu2"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        タグ一覧
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                        <button class="dropdown-item" type="button">タグ1</button>
-                        <button class="dropdown-item" type="button">タグ2</button>
-                        <button class="dropdown-item" type="button">タグ3</button>
-                    </div>
-                </div>
+            <div class="dropdown">
+
+                <%= form_tag boards_path, method: :get, class: 'dropdown' do %>
+                <%= select_tag :tag_id,
+                     options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
+                     {
+                       prompt: 'タグで絞り込み',
+                       class: 'form-control boards__select　dropdown-item',
+                       onchange: 'submit(this.form);'
+                     }
+                %>
+                <% end %>
+
+
+            </div>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <% if logged_in? %>
