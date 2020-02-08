@@ -23,4 +23,4 @@ Things you may want to cover:
 
 * オリジナルアプリです
 
-* rspecと格闘中です。
+* rspecとの格闘終了
