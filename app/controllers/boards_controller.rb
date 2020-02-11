@@ -2,12 +2,14 @@ class BoardsController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def index
+    @tag_id = params[:tag_id]
+
     if params[:keyword].blank?
-      @boards = params[:tag_id].present? ? Tag.find(params[:tag_id]).boards : Board.all
-      
+      @boards = params[:tag_id].present? ? Tag.find(@tag_id).boards : Board.all
       @boards = @boards.page(params[:page]).per(10)
     else 
-        @boards =  Board.search(params[:keyword]).page(params[:page]).per(10)
+      tag = BoardTagRelation.tag_search(@tag_id).first
+      @boards =  Board.search(params[:keyword]).where(id: tag.board_id).page(params[:page]).per(10)
     end
   end
 

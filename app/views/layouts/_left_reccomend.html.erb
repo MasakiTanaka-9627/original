@@ -1,6 +1,9 @@
-<h2>おすすめゲーム(仮)</h2>
+<h2>おすすめゲーム</h2>
+<% scraping_android %>
 <ul class="list-group">
-    <% 32.times do |n| %>
-    <li class="list-group-item"><%= image_tag "recomend_game/Image#{n}.jpeg", :size => '50x50' %><%= "ゲーム#{n}" %></li>
+    <% 20.times do |n| %>
+    <li class="list-group-item">
+        <%= image_tag RecommendGame.find(n+1).image, :size => '50x50' %><%= RecommendGame.find(n+1).title %></li>
     <% end %>
 </ul>
+<% RecommendGame.delete_all %>

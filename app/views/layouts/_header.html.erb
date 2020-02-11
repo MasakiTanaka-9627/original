@@ -41,7 +41,9 @@
                         <div class="form-inline my-2 my-lg-0">
                             <%= form_tag boards_path, method: :get do %>
                             <%= text_field_tag :keyword, "" ,placeholder: "入力してください", class: "form-control mr-sm-2" %>
+                            <%= hidden_field_tag :tag_id, @tag_id %>
                             <%= submit_tag '検索', class: "btn btn-outline-success my-2 my-sm-0" %>
+                        
                         </div>
                         <% end %>
                     </ul>

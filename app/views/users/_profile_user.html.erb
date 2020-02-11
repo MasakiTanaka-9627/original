@@ -29,11 +29,11 @@
             <div class="row">
                 <div class="col-lg-6">
                     <h2 class="mx-2">フォロー数</h2>
-                    <p class="mx-auto"><%= Relationship.where(following_id: user.id).count %></p>
+                    <p class="mx-2"><%= Relationship.where(following_id: user.id).count %></p>
                 </div>
                 <div class="col-lg-6">
                     <h2 class="mx-2">フォロワー数</h2>
-                    <p class="mx-auto"><%= Relationship.where(follower_id: user.id).count %></p>
+                    <p class="mx-2"><%= Relationship.where(follower_id: user.id).count %></p>
                 </div>
             </div>
             <div>
