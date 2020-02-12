@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 2020_02_10_100548) do
     t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
-  create_table "recommend_games", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "recommend_games", id: :integer, default: nil, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title"
     t.string "image"
     t.datetime "created_at", null: false

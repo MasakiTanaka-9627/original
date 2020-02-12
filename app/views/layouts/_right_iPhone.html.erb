@@ -3,7 +3,6 @@
 <ul class="list-group">
     <% 5.times do |n| %>
     <li class="list-group-item">
-        <%= image_tag RecommendGame.find(n+1).image, :size => '50x50' %><%= RecommendGame.find(n+1).title %></li>
+        <%= image_tag RecommendGame.find(n).image, :size => '50x50' %><%= RecommendGame.find(n).title %></li>
     <% end %>
 </ul>
-<% RecommendGame.delete_all %>
