@@ -29,15 +29,16 @@ class ApplicationController < ActionController::Base
   end
 
   def scraping_ios
-  #   sleep(1)
-  #   RecommendGame.delete_all
-  #   agent = Mechanize.new
-  #   page = agent.get("https://gamewith.jp/gamedb/ios/ranking/index")
-  #   @elements = page.search(".gdb-ranking-box_title_text")
-  #   @images = page.search(".gdb-ranking-box_img img")
-  #   num = @elements.length
-  #   num.times do |i|
-  #     RecommendGame.create!(id: i, title: @elements[i].text, image: @images[i][:src])
-  #   end
-   end
+    #   sleep(1)
+    #   RecommendGame.delete_all
+    #   agent = Mechanize.new
+    #   page = agent.get("https://gamewith.jp/gamedb/ios/ranking/index")
+    #   @elements = page.search(".gdb-ranking-box_title_text")
+    #   @images = page.search(".gdb-ranking-box_img img")
+    #   num = @elements.length
+    #   num.times do |i|
+    #     RecommendGame.create!(id: i, title: @elements[i].text, image: @images[i][:src])
+    #   end
+    #  end
+  end
 end

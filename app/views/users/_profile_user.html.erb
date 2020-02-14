@@ -11,9 +11,10 @@
             <%= link_to "フォローする", user_relationships_path(user.id), method: :post , class: 'btn btn-outline-primary btn-block mx-3 mt-4' %>
             <% end %>
             <% else %>
-            <%= link_to "いいね済み掲示板",favorites_user_path(current_user), method: :get , class: 'btn btn-outline-secondary btn-block mx-3 mt-4' %>
+            <%= link_to "いいね一覧",favorites_user_path(current_user), method: :get , class: 'btn btn-outline-secondary btn-block mx-3 mt-4' %>
             <% end %>
-            <%= link_to "フォローユーザー",user_relationships_path(user.id), method: :get , class: 'btn btn-outline-secondary btn-block mx-3 mt-4' %>
+            <%= link_to "フォロー一覧",user_relationships_path(user.id), method: :get , class: 'btn btn-outline-secondary btn-block mx-3 mt-4' %>
+            <%= link_to "フォロワ−一覧",user_relationships_path(user.id), method: :get , class: 'btn btn-outline-secondary btn-block mx-3 mt-4' %>
         </div>
         <div class="col-lg-9">
             <div class="row">

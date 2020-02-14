@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  resource :user_mfa_session, only: [:new, :create]
+  
   get 'relationships/create'
   get 'relationships/destroy'
   root "static_pages#home"
@@ -28,7 +31,7 @@ Rails.application.routes.draw do
   end 
 
   resources :users do
-    resource :relationships, only: [:create, :destroy, :show]
+    resource :relationships, only: [:create, :destroy, :show, :index]
     member do
       get "follows"  
       get "followers"

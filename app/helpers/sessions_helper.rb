@@ -2,6 +2,11 @@ module SessionsHelper
 
     def log_in(user)
         session[:user_id] = user.id
+        session.delete(:user_preid)
+    end
+
+    def pre_log_in(user)
+        session[:user_preid] = user.id
     end
 
     def current_user

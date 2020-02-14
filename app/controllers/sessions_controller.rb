@@ -6,9 +6,8 @@ class SessionsController < ApplicationController
     user = User.find_by(email: params[:session][:email].downcase)
 
     if user && user.authenticate(params[:session][:password])
-      log_in user
-      flash[:success] = 'ログインに成功しました。'
-      redirect_to user_url(id: user.id)
+      pre_log_in user
+      redirect_to new_user_mfa_session_path
     else
       flash[:danger] = 'パスワードとメールアドレスが登録されていません'
       redirect_to login_path

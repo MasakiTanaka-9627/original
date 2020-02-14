@@ -1,17 +1,24 @@
 class User < ApplicationRecord
-    VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-    
-    validates :name, length: { in: 5..15 }
-    validates :email, format: { with: VALID_EMAIL_REGEX }
-    validates :profile, length: { minimum: 8 }
-    validates :password, length: { minimum: 8 }, on: :create
-    
-    has_secure_password
+  acts_as_google_authenticated
+  
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
-    has_many :comments, dependent: :destroy
-    has_many :boards, dependent: :destroy
-    has_many :favorites
-    has_many :fav_boards, through: :favorites, source: :post
+  acts_as_google_authenticated drift: 10, issuer: 'TEST MY APP'
+  after_create { |record| record.set_google_secret }
+
+  validates :name, length: { in: 5..15 }
+  validates :email, format: { with: VALID_EMAIL_REGEX }
+  validates :profile, length: { minimum: 8 }
+  validates :password, length: { minimum: 8 }, on: :create
+
+  has_secure_password
+
+  has_many :comments, dependent: :destroy
+  has_many :boards, dependent: :destroy
+  has_many :favorites
+  has_many :fav_boards, through: :favorites, source: :post
+
+
 
   # ====================自分がフォローしているユーザーとの関連 ===================================
   #フォローする側のUserから見て、フォローされる側のUserを(中間テーブルを介して)集める。なので親はfollowing_id(フォローする側)
@@ -31,6 +38,4 @@ class User < ApplicationRecord
     # 今自分(引数のuser)がフォローしようとしているユーザー(レシーバー)がフォローされているユーザー(つまりpassive)の中から、引数に渡されたユーザー(自分)がいるかどうかを調べる
     passive_relationships.find_by(following_id: user.id).present?
   end
-
-
 end
