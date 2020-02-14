@@ -1,5 +1,7 @@
 class User < ApplicationRecord
   acts_as_google_authenticated
+
+  mount_uploader :image, ImageUploader
   
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 

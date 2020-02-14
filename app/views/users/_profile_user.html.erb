@@ -2,7 +2,12 @@
     <div class="row">
         <div class="col-lg-3 mb-3">
             <div>
-                <%= image_tag 'usersample.png',size: '150x150' %>
+            <% binding.pry %>
+                <% if user.image.nil?%>
+                <%= image_tag 'usersample.png', size: '150x150' %>
+                <% else %>
+                <%= image_tag user.image.to_s, size: '150x150'%>
+                <% end %>
             </div>
             <% if current_user.id != user.id %>
             <% if user.followed_by?(current_user) %>

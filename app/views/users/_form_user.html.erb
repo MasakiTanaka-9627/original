@@ -11,21 +11,26 @@
     <%= f.email_field :email, class: 'form-control' %>
 </div>
 
+<div class="field">
+    <%= f.label :image %>
+    <%= f.file_field :image %>
+</div>
+
 <div class="form-group">
     <%= f.label :content, '自己紹介文' %>
     <%= f.text_area :profile, class: 'form-control', size: "10x5" %>
 </div>
 
 <% if !(logged_in?)%>
-    <div class="form-group">
-        <%= f.label :password, 'パスワード' %>
-        <%= f.password_field :password, class: 'form-control' %>
-    </div>
+<div class="form-group">
+    <%= f.label :password, 'パスワード' %>
+    <%= f.password_field :password, class: 'form-control' %>
+</div>
 
-    <div class="form-group">
-        <%= f.label :password_confirmation, 'パスワード（もう１度ご入力ください）' %>
-        <%= f.password_field :password_confirmation, class: 'form-control' %>
-    </div>
+<div class="form-group">
+    <%= f.label :password_confirmation, 'パスワード（もう１度ご入力ください）' %>
+    <%= f.password_field :password_confirmation, class: 'form-control' %>
+</div>
 <% end %>
 
 <div class="col-lg-8 offset-lg-2">

@@ -1,12 +1,30 @@
 <% if flash[:error] %>
-  <%= flash[:error] %>
-  <br />
-<% end %>
-<img src="<%= @user.google_qr_uri %>">
+<%= flash[:error] %>
 <br />
-<%= form_tag user_mfa_session_path, method: :post do %>
-  <div class="actions">
-    <%= text_field :auth, :mfa_code %>
-    <%= submit_tag 'authenticate' %>
-  </div>
 <% end %>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <%= render 'layouts/left' %>
+      <div class="col-lg-6">
+        <h2>2段階認証コード</h2>
+        <div class="col-lg-6 offset-lg-3 mt-3">
+          <img src="<%= @user.google_qr_uri %>">
+          <%= form_tag user_mfa_session_path, method: :post do %>
+        </div>
+        <div class="form-group">
+          <%= label :password, '認証コード' %>
+          <%= password_field :auth, :mfa_code, class: 'form-control' %>
+
+          <div class="col-lg-8 offset-lg-2 mt-3">
+            <%= submit_tag '送信', class: 'btn btn-primary btn-block' %>
+          </div>
+
+        </div>
+        <% end %>
+      </div>
+      <%= render 'layouts/right' %>
+    </div>
+  </div>
+</body>

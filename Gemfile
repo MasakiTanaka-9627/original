@@ -55,6 +55,15 @@ gem 'mechanize'
 # 2段階認証
 gem 'google-authenticator-rails'
 
+# 自動化Gem
+gem 'whenever', require: false
+
+# 画像アップロード
+gem 'carrierwave'
+
+#画像に対して処理を行う場合
+gem 'mini_magick' 
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
