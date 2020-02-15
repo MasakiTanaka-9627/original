@@ -22,6 +22,8 @@
 set :environment, :development
 set :output, {:error => 'log/error.log', :standard => 'log/cron.log'}
 
+ENV.each { |k, v| env(k, v) }
+
 every 3.minute do
   runner "Scraping.android"
   runner "Scraping.ios"

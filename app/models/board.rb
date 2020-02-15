@@ -4,8 +4,8 @@ class Board < ApplicationRecord
 
   scope :search, -> (keyword) { where('title LIKE ?', "%#{keyword}%") }
 
-  validates :title, length: { in: 5..15 } 
-  validates :content, length: { minimum: 5 }
+  validates :title, presence: true
+  validates :content, presence: true
 
   belongs_to :user
   has_many :users, through: :favorites

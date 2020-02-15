@@ -8,9 +8,10 @@ class UserMfaSessionsController < ApplicationController
     @user = User.find(session[:user_preid])
     if @user.google_authentic?(params[:auth][:mfa_code])
       session[:user_id] = @user.id
+      flash[:success] = '認証に成功しました'
       redirect_to root_path
     else
-      flash[:error] = "Wrong code"
+      flash[:danger] = "認証に失敗しました。"
       render :new
     end
   end

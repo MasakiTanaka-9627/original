@@ -1,4 +1,8 @@
 <div class="col-lg-3">
+    <% if RecommendGame.first.nil? || (Time.now.to_i - RecommendGame.first.created_at.to_i > 3600) %>
+    <% scraping_android  %>
+    <% scraping_ios  %>
+    <% end %>
     <%= render 'layouts/left_account' %>
     <div class="d-none d-lg-block">
         <%= render 'layouts/left_reccomend' %>
