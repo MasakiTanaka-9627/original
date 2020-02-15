@@ -40,6 +40,12 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy 
+    @user = User.find(id: params[:id])
+    @user.destroy
+    redirect_to root_path
+  end
+
   def follows
     user = User.find(params[:id])
     @users = user.followings

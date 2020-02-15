@@ -18,7 +18,7 @@
             <%= link_to "いいね一覧",favorites_user_path(current_user), method: :get , class: 'btn btn-outline-secondary btn-block mx-3 mt-4' %>
             <% end %>
             <%= link_to "フォロー一覧",user_relationships_path(user.id), method: :get , class: 'btn btn-outline-secondary btn-block mx-3 mt-4' %>
-            <%= link_to "フォロワ−一覧",user_relationships_path(user.id), method: :get , class: 'btn btn-outline-secondary btn-block mx-3 mt-4' %>
+            <%= link_to "フォロワー一覧",user_relationships_path(user.id), method: :get , class: 'btn btn-outline-secondary btn-block mx-3 mt-4' %>
         </div>
         <div class="col-lg-9">
             <div class="row">
@@ -47,6 +47,7 @@
                 <div class="row col-6 offset-3">
                     <% if current_user.id == user.id %>
                     <%= link_to "プロフィール編集", edit_user_path(user.id), class: 'btn btn-outline-secondary btn-block my-2' %>
+                    <%= link_to "ユーザー削除", user_path, class: 'btn btn-outline-danger btn-block my-2', method: :delete %>
                     <% end %>
                 </div>
             </div>
