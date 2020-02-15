@@ -11,6 +11,10 @@ module App
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
+
+    config.autoload_paths += %W(#{config.root}/lib)
+    config.autoload_paths += Dir["#{config.root}/lib/**/"]
+    
     config.time_zone = "Tokyo"
 
     config.i18n.default_locale = :ja
@@ -25,6 +29,5 @@ module App
                        request_specs: false
       g.fixture_replacement :factory_bot, dir: "spec/factories"
     end
-
   end
 end

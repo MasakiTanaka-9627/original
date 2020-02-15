@@ -1,0 +1,2 @@
+class RecommendIosGame < ApplicationRecord
+end
