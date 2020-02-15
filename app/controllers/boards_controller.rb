@@ -2,13 +2,12 @@ class BoardsController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def index
-    @tag_id = params[:tag_id]
-
+    tag_id = params[:tag_id]
     if params[:keyword].blank?
-      @boards = params[:tag_id].present? ? Tag.find(@tag_id).boards : Board.all
+      @boards = params[:tag_id].present? ? Tag.find(tag_id).boards : Board.all
       @boards = @boards.page(params[:page]).per(10)
     else 
-      tag = BoardTagRelation.tag_search(@tag_id).first
+      tag = BoardTagRelation.tag_search(tag_id).first
       @boards =  Board.search(params[:keyword]).where(id: tag.board_id).page(params[:page]).per(10)
     end
   end
@@ -18,14 +17,14 @@ class BoardsController < ApplicationController
   end
 
   def create
-    @board = Board.new(board_params)
-    @board.user_id = current_user.id
+    board = Board.new(board_params)
+    board.user_id = current_user.id
 
-    if @board.save
+    if board.save
       redirect_to current_user
     else
       flash[:danger] = '投稿に失敗しました。'
-      redirect_to new_board_path, flash: { error: @board.errors.full_messages}
+      redirect_to new_board_path, flash: { error: board.errors.full_messages}
     end
   end
 
@@ -39,18 +38,18 @@ class BoardsController < ApplicationController
   end
 
   def update
-    @board.update(board_params)
-    if @board.save
+    board.update(board_params)
+    if board.save
       flash[:success] = '編集に成功しました。'
       redirect_to current_user
     else
       flash[:danger] = '編集に失敗しました。'
-      redirect_to edit_board_path(@board.id), flash: { error: @board.errors.full_messages}
+      redirect_to edit_board_path(board.id), flash: { error: board.errors.full_messages}
     end
   end
 
   def destroy
-    @board.destroy
+    board.destroy
     redirect_back(fallback_location: root_path)
   end
 

@@ -12,9 +12,9 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.find(params[:id])
-    @user.update!(user_params)
-    if @user.save
+    user = User.find(params[:id])
+    user.update!(user_params)
+    if user.save
       flash[:success] = '編集に成功しました'
       redirect_to current_user
     else
@@ -29,11 +29,11 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params)
-    if @user.save
-      log_in @user
+    user = User.new(user_params)
+    if user.save
+      log_in user
       flash[:success] = '新しいユーザーを登録しました。'
-      redirect_to @user
+      redirect_to user
     else
       flash[:danger] = 'ユーザーの登録に失敗しました。'
       redirect_to new_user_path, flash: { error: @user.errors.full_messages}
@@ -41,8 +41,8 @@ class UsersController < ApplicationController
   end
 
   def destroy 
-    @user = User.find(params[:id])
-    @user.destroy
+    user = User.find(params[:id])
+    user.destroy
     redirect_to root_path
   end
 
@@ -61,9 +61,10 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
   
-    private
+  private
 
   def user_params
     params.require(:user).permit(:name, :email, :image, :profile, :password, :password_confirmation)
   end
+  
 end

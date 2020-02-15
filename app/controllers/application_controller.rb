@@ -1,19 +1,16 @@
 class ApplicationController < ActionController::Base
-  protect_from_forgery with: :exception
   include SessionsHelper
 
+  helper_method :scraping_android
+  helper_method :scraping_ios
   before_action :set_current_user
 
   protect_from_forgery with: :exception
-
   add_flash_types :success, :info, :warning, :danger
 
   def set_current_user
     @current_user = User.find_by(id: session[:user_id])
   end
-
-  helper_method :scraping_android
-  helper_method :scraping_ios
 
   def scraping_android
     sleep(1)
