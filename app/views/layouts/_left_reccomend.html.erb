@@ -3,6 +3,6 @@
 <ul class="list-group">
     <% 20.times do |n| %>
     <li class="list-group-item">
-        <%= image_tag RecommendGame.find(n).image, :size => '50x50' %><%= RecommendGame.find(n).title %></li>
+       <div class="float-left"><%= image_tag RecommendGame.find(n).image, :size => '50x50' %></div><p><%= RecommendGame.find(n).title %></p></li>
     <% end %>
 </ul>

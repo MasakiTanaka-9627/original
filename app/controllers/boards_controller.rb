@@ -4,8 +4,8 @@ class BoardsController < ApplicationController
   def index
     tag_id = params[:tag_id]
     if params[:keyword].blank?
-      @boards = params[:tag_id].present? ? Tag.find(tag_id).boards : Board.all
-      @boards = @boards.page(params[:page]).per(10)
+      boards = params[:tag_id].present? ? Tag.find(tag_id).boards : Board.all
+      @boards = boards.page(params[:page]).per(10)
     else 
       tag = BoardTagRelation.tag_search(tag_id).first
       @boards =  Board.search(params[:keyword]).where(id: tag.board_id).page(params[:page]).per(10)
