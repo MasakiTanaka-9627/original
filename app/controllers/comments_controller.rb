@@ -2,6 +2,7 @@ class CommentsController < ApplicationController
   before_action :comment_params, only: [:create]
   
   def create
+   binding.pry 
     comment = Comment.new( content: comment_params[:content], 
                             user_id: current_user.id, 
                             board_id: params[:board_id])

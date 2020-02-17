@@ -5,4 +5,5 @@ class Comment < ApplicationRecord
 
   belongs_to :user
   belongs_to :board
+  has_many :favorite_comments, dependent: :destroy
 end

@@ -8,7 +8,7 @@ class Board < ApplicationRecord
 
   belongs_to :user
   has_many :users, through: :favorites
-  has_many :comments
+  has_many :comments, dependent: :destroy
   has_many :board_tag_relations, dependent: :destroy
   has_many :tags, through: :board_tag_relations, dependent: :destroy
   has_many :favorites, dependent: :destroy

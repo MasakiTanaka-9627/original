@@ -13,6 +13,7 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :boards, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :favorite_comments, dependent: :destroy
   has_many :fav_boards, through: :favorites, source: :post
   has_many :active_relationships, class_name: "Relationship", foreign_key: :following_id
   has_many :followings, through: :active_relationships, source: :follower

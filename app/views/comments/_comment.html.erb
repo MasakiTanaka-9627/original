@@ -1,9 +1,24 @@
 <div class="box3">
     <div>ユーザー名：<%= comment.user.name %></div>
     <div>コメント：<%= comment.content %></div>
+
+    <% favoritecomment = FavoriteComment.where(comment_id: comment.id) %>
+    <div class="my-3">
+        <div class="content">いいね数：<%= favoritecomment.count %></div>
+    </div>
+
+    <div>
+        <%  if favoritecomment.find_by(user_id: current_user.id).nil? %>
+        <%= link_to "いいねします！", add_comment_path(comment), method: :post %>
+        <% else %>
+        <%= link_to "いいねを解除します", delete_comment_path(comment), method: :delete %>
+        <% end %>
+    </div>
+
     <% if comment.user_id == current_user.id %>
+
     <div class="col-10 offset-1">
-    <%= button_to "削除", board_comment_path(comment), method: :delete, class: 'btn btn-outline-secondary btn-block my-3',data: { confirm: '削除しますか？' } %>
+        <%= button_to "削除", board_comment_path(comment), method: :delete, class: 'btn btn-outline-secondary btn-block my-3',data: { confirm: '削除しますか？' } %>
     </div>
     <% end %>
 </div>
