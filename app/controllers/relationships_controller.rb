@@ -11,9 +11,14 @@ class RelationshipsController < ApplicationController
     redirect_back(fallback_location: root_path)
   end
 
-  def show 
+  def following 
     @user = User.find(current_user.id)
-    @follows = Relationship.where(following_id: current_user.id)
-  end 
+    @follow = Relationship.where(following_id: current_user.id)
+  end
+
+  def follower
+    @user = User.find(current_user.id)
+    @follow = Relationship.where(follower_id: current_user.id)
+  end
 
 end

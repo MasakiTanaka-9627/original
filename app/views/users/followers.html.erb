@@ -1,0 +1,20 @@
+<% provide(:title, "フォロワ−ユーザー") %>
+
+<% user =  @user %>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-9">
+            <%= render 'users/profile_user', user: @user %>
+            <div class="row">
+                <div class="col-lg-4 d-none d-lg-block">
+                    <%= render 'layouts/left_reccomend'%>
+                </div>
+                <div class="col-lg-8">
+                <h2>フォロワ−ユーザー</h2>
+                    <%= render 'relationships/index_users', follows: @users%>
+                </div>
+            </div>
+        </div>
+        <%= render 'layouts/right' %>
+    </div>
+</div>

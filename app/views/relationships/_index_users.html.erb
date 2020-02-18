@@ -1,6 +1,5 @@
-<%# <% user = User.find(follows.follwer_id)%>
 <% follows.length.times do |num| %>
-<% user = User.find(follows[num].follower_id) %>
+<% user = follows[num] %>
 <div class="box3 mb-3">
     <div class="user">ユーザー名：<%= user.name %></div>
     <div class="content">自己紹介文：<%= user.profile %></div>

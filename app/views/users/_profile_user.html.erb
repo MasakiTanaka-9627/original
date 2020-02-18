@@ -18,9 +18,8 @@
             <% else %>
             <%= link_to "いいね一覧",favorites_user_path(current_user), method: :get , class: 'btn btn-outline-secondary btn-block mx-3 mt-4' %>
             <% end %>
-            <%= link_to "フォロー一覧",user_relationships_path(user.id), method: :get , class: 'btn btn-outline-secondary btn-block mx-3 mt-4' %>
-            <%# 未完成 %>
-            <%= link_to "フォロワー一覧",user_relationships_path(user.id), method: :get , class: 'btn btn-outline-secondary btn-block mx-3 mt-4' %>
+            <%= link_to "フォロー一覧",follows_user_path(user.id), method: :get , class: 'btn btn-outline-secondary btn-block mx-3 mt-4' %>
+            <%= link_to "フォロワー一覧",followers_user_path(user.id), method: :get , class: 'btn btn-outline-secondary btn-block mx-3 mt-4' %>
         </div>
         <div class="col-lg-9">
             <div class="row">
