@@ -19,6 +19,8 @@
         <div class="content">Path：<%= request.path %></div>
     </div>
     <div>
+        <% if current_user.nil? %>
+        <% else %>
         <%  if favorite.find_by(user_id: current_user.id).nil? %>
         <%= link_to "いいねします！", add_board_path(board), method: :post %>
         <% else %>
@@ -33,6 +35,7 @@
         <% if board.user_id == current_user.id %>
         <%= link_to "編集", edit_board_path(board.id), class: 'btn btn-outline-primary btn-block my-1' %>
         <%= link_to "削除" , board_path(board.id), :method => :delete, class: 'btn btn-outline-secondary btn-block my-3',data: { confirm: '削除しますか？' } %>
+        <% end %>
         <% end %>
     </div>
 </div>
