@@ -19,15 +19,10 @@ RSpec.describe User, type: :model do
       password: "foobarexample"
       )
 
-    user.name = "a"* 4
+    user.name = ""
     expect(user).not_to be_valid
-    user.name = "a"* 5
+    user.name = "a"
     expect(user).to be_valid
-
-    user.name = "a"* 15
-    expect(user).to be_valid
-    user.name = "a"* 16
-    expect(user).not_to be_valid
   end
 
   it "emailバリデーション" do
@@ -41,19 +36,6 @@ RSpec.describe User, type: :model do
     expect(user).not_to be_valid
   end
 
-  it "profileのバリデーション" do
-    user = User.new(   
-      name: "exampletest",
-      email:  "admin@rails.com",
-      password: "foobarexample"
-      )
-    
-    user.profile = "a"* 7
-    expect(user).not_to be_valid
-    user.profile = "a"* 8
-    expect(user).to be_valid
-  end
-
   it "passwordバリデーション" do
     user = User.new(   
       name: "exampletest",
@@ -61,9 +43,9 @@ RSpec.describe User, type: :model do
       profile: "testprofile",
       )
     
-    user.password = "a"* 7
+    user.password = "a"* 4
     expect(user).not_to be_valid      
-    user.password = "a"* 8
+    user.password = "a"* 5
     expect(user).to be_valid
   end
 

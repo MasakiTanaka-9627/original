@@ -47,18 +47,17 @@ class UsersController < ApplicationController
   end
 
   def follows
-    user = User.find(params[:id])
-    @user = User.find(current_user.id)
-    @users = user.followings
+    @user = User.find(params[:id])
+    @users = @user.followings
   end
 
   def followers
-    user = User.find(params[:id])
-    @user = User.find(current_user.id)
-    @users = user.followers
+    @user = User.find(params[:id])
+    @users = @user.followers
   end
 
   def favorites
+
     @favorites = Favorite.where(user_id: current_user.id)
     @user = User.find(current_user.id)
     @user = User.find(params[:id])
