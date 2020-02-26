@@ -97,7 +97,6 @@ ActiveRecord::Schema.define(version: 2020_02_17_111826) do
     t.string "image"
   end
 
-  add_foreign_key "board_tag_relations", "boards"
   add_foreign_key "board_tag_relations", "tags"
   add_foreign_key "boards", "users"
   add_foreign_key "comments", "boards"
