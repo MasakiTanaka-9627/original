@@ -23,26 +23,6 @@
                         <li class="nav-item"><%= link_to "ログアウト", logout_path, class: "nav-link", method: :delete %></li>
                         <% else%>
                         <%end%>
-                        <div class="dropdown mx-3">
-
-                            <%= form_tag boards_path, method: :get, class: 'dropdown' do %>
-                            <%= select_tag :tag_id,
-                     options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
-                     {
-                       prompt: 'タグで絞り込み',
-                       class: 'form-control boards__select　dropdown-item',
-                       onchange: 'submit(this.form);'
-                     }
-                     %>
-                            <% end %>
-                        </div>
-                        <div class="form-inline my-2 my-lg-0">
-                            <%= form_tag boards_path, method: :get do %>
-                            <%= text_field_tag :keyword, "" ,placeholder: "入力してください", class: "form-control mr-sm-2" %>
-                            <%= hidden_field_tag :tag_id, @tag_id %>
-                            <%= submit_tag '検索', class: "btn btn-outline-success my-2 my-sm-0" %>
-                        </div>
-                        <% end %>
                     </ul>
                 </form>
             </div>

@@ -6,7 +6,7 @@ gem 'rails', '5.2.4.1'
 # Use mysql as the database for Active Record
 gem 'mysql2', '>= 0.3.18', '< 0.5'
 # Use Puma as the app server
-gem 'puma', '~> 3.0'
+gem 'puma', ">= 3.12.4"
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -34,6 +34,7 @@ gem 'bootstrap'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 
+gem "nokogiri", ">= 1.10.8"
 # Google Play Store & App Store Ranking
 gem 'store_api'
 
@@ -75,7 +76,7 @@ group :development, :test do
   gem 'pry-byebug'
   gem "rspec-rails"
   gem "factory_bot_rails"
-   gem 'spring-commands-rspec'
+  gem 'spring-commands-rspec'
 end
 
 group :development do
