@@ -321,7 +321,7 @@ PLATFORMS
 DEPENDENCIES
   acts-as-taggable-on (~> 6.0)
   bcrypt (= 3.1.7)
-  bootstrap
+  bootstrap (~> 4.4.1)
   byebug
   carrierwave
   coffee-rails (~> 4.2)
