@@ -2,6 +2,10 @@
 @import './sessions';
 @import './static_pages';
 
+html {
+    font-size: 14px; /* ルート要素のフォントサイズを1rem=14pxと定義する */
+} 
+
 header {
     padding-bottom: 10px;
 }
@@ -21,60 +25,31 @@ h2 {
 .box_profile {
     padding: 5px 0;
     margin-bottom: 16px;
-    font-weight: bold;
     border: 1px solid rgba(0, 0, 0, 0.125);
     background-color: #ffffff;
 }
 
-.box_profile p {
-    margin: 0;
-    padding: 0;
-}
 
 .box3 {
     padding: 0;
     margin-top: 10px;
     padding: 5px;
-    font-weight: bold;
-    border: solid 3px #000000;
+    border: solid 1.1px #000000;
     background-color: #ffffff;
 }
 
-#error_explanation {
-    color: red;
-
-    ul {
-        color: red;
-        margin: 0 0 30px 0;
-    }
+// 大デバイス（デスクトップ, 1200px 未満）
+@media (min-width: 992px) {
 }
 
-.pagination>li>a {
-    border: none;
-    color: #696969;
+// 中デバイス（タブレット, 992px 未満）
+@media (max-width: 991.98px) {
 }
+// 小デバイス（横向きモバイル, 768px 未満）
+@media (max-width: 767.98px) {
+   }
 
-.pagination>.active>a {
-    background: #93c9ff;
-    border-radius: 15px;
-}
-
-.pagination>li>a:hover {
-    border-radius: 15px;
-}
-
-$gray-medium-light: #eaeaea;
-
-@mixin box_sizing {
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-}
-
-.debug_dump {
-    clear: both;
-    float: left;
-    width: 100%;
-    margin-top: 45px;
-    @include box_sizing;
+// @include media-breakpoint-up(sm) {
+// 極小デバイス（縦向きモバイル, 576px 未満）
+@media (max-width: 575.98px) {
 }
