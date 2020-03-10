@@ -11,15 +11,23 @@
             </div>
             <% if current_user.id != user.id %>
             <% if user.followed_by?(current_user) %>
-            <%= link_to "フォロー済み",user_relationships_path(user.id), method: :delete , class: 'btn btn-outline-secondary btn-block mx-3 mt-4' %>
+            <div class="mx-4">
+                <%= link_to "フォロー済み",user_relationships_path(user.id), method: :delete , class: 'btn btn-outline-secondary btn-block mt-4' %>
+            </div>
             <% else %>
-            <%= link_to "フォローする", user_relationships_path(user.id), method: :post , class: 'btn btn-outline-primary btn-block mx-3 mt-4' %>
+            <div class="mx-4">
+                <%= link_to "フォローする", user_relationships_path(user.id), method: :post , class: 'btn btn-outline-primary btn-block mt-4' %>
+            </div>
             <% end %>
             <% else %>
-            <%= link_to "いいね一覧",favorites_user_path(current_user), method: :get , class: 'btn btn-outline-secondary btn-block mx-3 mt-4' %>
+            <div class="mx-4">
+                <%= link_to "いいね一覧",favorites_user_path(current_user), method: :get , class: 'btn btn-outline-secondary btn-block mt-4' %>
+            </div>
             <% end %>
-            <%= link_to "フォロー一覧",follows_user_path(user.id), method: :get , class: 'btn btn-outline-secondary btn-block mx-3 mt-4' %>
-            <%= link_to "フォロワー一覧",followers_user_path(user.id), method: :get , class: 'btn btn-outline-secondary btn-block mx-3 mt-4' %>
+            <div class="mx-4">
+                <%= link_to "フォロー一覧",follows_user_path(user.id), method: :get , class: 'btn btn-outline-secondary btn-block mt-4' %>
+                <%= link_to "フォロワー一覧",followers_user_path(user.id), method: :get , class: 'btn btn-outline-secondary btn-block mt-4' %>
+            </div>
         </div>
         <div class="col-lg-9">
             <div class="row">
@@ -45,11 +53,11 @@
             <div>
                 <h2 class="mx-2 mt-2">自己紹介文</h2>
                 <p class="mx-2"><%= user.profile %></p>
-                <div class="row col-10 offset-1">
-                    <% if current_user.id == user.id %>
-                    <%= link_to "プロフィール設定", edit_user_path(user.id), class: 'btn btn-outline-secondary btn-block my-2' %>
-                    <% end %>
+                <% if current_user.id == user.id %>
+                <div class="mx-4">
+                    <%= link_to "プロフィール設定", edit_user_path(user.id), class: 'btn btn-outline-secondary btn-block' %>
                 </div>
+                <% end %>
             </div>
         </div>
     </div>

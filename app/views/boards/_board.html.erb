@@ -1,5 +1,9 @@
 <div class="box3 mb-3">
+    <% if logged_in? %>
     <div class="user">ユーザー名：<%= link_to board.user.name, user_path(id: board.user_id) %></div>
+    <% else %>
+    <div class="user">ユーザー名：<%= board.user.name %></div>
+    <% end %>    
     <div class="title">タイトル：<%= board.title %></div>
     <div class="content">board.id：<%= board.id %></div>
     <div class="timestamp">投稿日時：<%= board.created_at.to_s(:datetime_jp) %></div>
